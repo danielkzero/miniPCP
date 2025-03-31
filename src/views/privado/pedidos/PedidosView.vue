@@ -1,46 +1,91 @@
 <template>
-    <div class="px-4">
-        <h1 class="text-2xl font-bold mb-4">Lista de Pedidos</h1>
+    <div>
+        <!-- DataTable Component -->
+        <DataTable :data="pedidos" :columns="columns" @delete="handleDelete" @edit="handleEdit" />
+
+        <!-- Modal Component -->
+        <ModalComponent v-if="showModal" :item="selectedItem" :fields="fields" @save="handleSave" @close="closeModal" />
     </div>
-    <table class="min-w-full divide-y divide-gray-200">
-        <thead class="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-            <tr>
-                <th class="px-6 py-3 ">ID</th>
-                <th class="px-6 py-3">Cliente</th>
-                <th class="px-6 py-3">Emitido em</th>
-                <th class="px-6 py-3">Previsão de entrega</th>
-                <th class="px-6 py-3">Status</th>
-            </tr>
-        </thead>
-        <tbody class="divide-y divide-gray-200">
-            <tr v-for="pedido in pedidos" :key="pedido.id"
-                class="odd:bg-white even:bg-gray-50 odd:hover:bg-gray-100 even:hover:bg-gray-100">
-                <td class="px-6 py-4 whitespace-nowrap">{{ pedido.id }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ pedido.nome_cliente }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ formatDate(pedido.datas.data_cadastro) }}</td>
-                <td class="px-6 py-4 whitespace-nowrap">{{ formatDate(pedido.datas.data_previsao_entrega) }}</td>
-                <td class="px-6 py-4"><span
-                        class="bg-emerald-500 p-2 rounded-xl text-xs text-white hover:bg-emerald-400">{{
-                            pedido.datas.status
-                        }}</span></td>
-            </tr>
-        </tbody>
-    </table>
 </template>
 
 <script>
-import { pedidos } from '@/dados/EstruturaPedido.json'; // Importando os dados de pedidos do arquivo JSON
-import moment from 'moment'; // Importando a biblioteca moment.js para manipulação de datas
+import { pedidos } from '@/dados/EstruturaPedido.json'; // Importing order data from JSON
+import moment from 'moment'; // Date formatting library
+import DataTable from '@/components/DataTable/index.vue'; // Table component
+import ModalComponent from '@/components/DataTable/ModalComponent.vue'; // Modal component
+
 export default {
+    components: { DataTable, ModalComponent },
     data() {
         return {
-            pedidos
+            pedidos, // Order data loaded from JSON
+            showModal: false, // Controls modal visibility
+            selectedItem: null, // Currently selected item for editing
+            columns: [
+                { key: "id", label: "ID" },
+                { key: "nome_cliente", label: "Cliente" },
+                { key: "data_cadastro", label: "Emitido em" },
+                { key: "data_previsao_entrega", label: "Previsão de entrega" },
+                { key: "status", label: "Status" },
+            ],
+            fields: [
+                { key: "nome_cliente", label: "Cliente", required: true },
+                { key: "data_cadastro", label: "Emitido em", type: "date", required: true },
+                { key: "data_previsao_entrega", label: "Previsão de entrega", type: "date", required: true },
+                { key: "status", label: "Status", required: true },
+            ],
         };
     },
     methods: {
+        /**
+         * Deletes an item from the `pedidos` array.
+         * @param {number} id - The ID of the item to delete.
+         */
+        handleDelete(id) {
+            this.pedidos = this.pedidos.filter(pedido => pedido.id !== id);
+        },
+
+        /**
+         * Opens the modal for editing an item.
+         * @param {Object} item - The item to edit.
+         */
+        handleEdit(item) {
+            this.selectedItem = { ...item }; // Clone the item to avoid direct mutation
+            this.showModal = true;
+        },
+
+        /**
+         * Saves an item (either updates an existing one or adds a new one).
+         * @param {Object} item - The item to save.
+         */
+        handleSave(item) {
+            if (item.id) {
+                // Update existing item
+                this.pedidos = this.pedidos.map(pedido => (pedido.id === item.id ? item : pedido));
+            } else {
+                // Add new item
+                item.id = Date.now(); // Generate a unique ID
+                this.pedidos.push(item);
+            }
+            this.closeModal(); // Close the modal after saving
+        },
+
+        /**
+         * Closes the modal and resets the selected item.
+         */
+        closeModal() {
+            this.showModal = false;
+            this.selectedItem = null;
+        },
+
+        /**
+         * Formats a date using moment.js.
+         * @param {string|Date} data - The date to format.
+         * @returns {string} - The formatted date (DD/MM/YYYY).
+         */
         formatDate(data) {
-            return moment(data).format('DD/MM/YYYY'); // Formata a data para o formato desejado
-        }
+            return moment(data).format('DD/MM/YYYY');
+        },
     },
 };
 </script>
