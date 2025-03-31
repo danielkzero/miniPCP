@@ -1,0 +1,95 @@
+{
+    "clientes": [
+        {
+            "id": "1",
+            "descricoes": {
+                "nome": "CONSMETAL",
+                "razao_social": "CONSMETAL LTDA",
+                "apelidos": [
+                    "CONSMETAL"
+                ]
+            },
+            "documentos": [
+                {
+                    "tipo": "CPF",
+                    "numero": "123.456.789-10"
+                },
+                {
+                    "tipo": "CNPJ",
+                    "numero": "23.456.789/0001-10"
+                },
+                {
+                    "tipo": "inscricao_estadual",
+                    "numero": "123456789"
+                },
+                {
+                    "tipo": "inscricao_municipal",
+                    "numero": "9876543210"
+                }
+            ],
+            "contatos": [
+                {
+                    "nome": "Borges",
+                    "cargo": "Gerente",
+                    "telefones": [
+                        "11 99999-9999",
+                        "11 88888-8888"
+                    ],
+                    "emails": [
+                        "contato1@example.com",
+                        "contato2@example.com"
+                    ],
+                    "observacoes": "não ligar após as 18h"
+                }
+            ],
+            "enderecos": [
+                {
+                    "tipo": "Principal",
+                    "logradouro": "Rua Principal",
+                    "numero": "1",
+                    "complemento": "Sala 1",
+                    "bairro": "Centro",
+                    "cidade": "São Paulo",
+                    "estado": "SP",
+                    "cep": "00000-000",
+                    "observacoes": "próximo ao metrô"
+                },
+                {
+                    "tipo": "Entrega",
+                    "logradouro": "Rua Entrega",
+                    "numero": "2",
+                    "complemento": "Sala 2",
+                    "bairro": "Centro",
+                    "cidade": "São Paulo",
+                    "estado": "SP",
+                    "cep": "00000-000",
+                    "observacoes": "próximo ao metrô"
+                },
+                {
+                    "tipo": "Cobrança",
+                    "logradouro": "Rua Cobrança",
+                    "numero": "3",
+                    "complemento": "Sala 3",
+                    "bairro": "Centro",
+                    "cidade": "São Paulo",
+                    "estado": "SP",
+                    "cep": "00000-000",
+                    "observacoes": "próximo ao metrô"
+                }
+            ],
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

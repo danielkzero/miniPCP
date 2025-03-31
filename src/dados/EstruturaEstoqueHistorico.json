@@ -1,0 +1,52 @@
+{
+    "historico_estoque": [
+        {
+            "id": 1,
+            "id_produto": 1,
+            "nome_produto": "SUPORTE PLACA DE MOTO",
+            "tipo_operacao": {
+                "id": 1,
+                "nome": "ENTRADA",
+                "natureza": 0
+            },
+            "quantidade": 10,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 2,
+            "id_produto": 1,
+            "nome_produto": "SUPORTE PLACA DE MOTO",
+            "tipo_operacao": {
+                "id": 2,
+                "nome": "SAIDA",
+                "natureza": 1
+            },
+            "quantidade": 5,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

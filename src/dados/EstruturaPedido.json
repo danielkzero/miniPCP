@@ -1,0 +1,164 @@
+{
+    "pedidos": [
+        {
+            "id": 1,
+            "id_cliente": 1,
+            "nome_cliente": "CONSMETAL",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_previsao_entrega": "2021-01-15",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_entrega": "2021-01-15",
+                "autor_entrega": 1,
+                "nome_autor_entrega": "ADMIN",
+                "status": "Entregue",
+                "data_status": "2021-01-15",
+                "autor_status": 1,
+                "nome_autor_status": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            },
+            "itens": [
+                {
+                    "id": 1,
+                    "id_produto": 1,
+                    "nome_produto": "BARRA AMORTECEDORA 30mm",
+                    "quantidade": 10,
+                    "preco": 10.00,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_alteracao": "2021-01-01",
+                        "autor_alteracao": 1,
+                        "nome_autor_alteracao": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 2,
+                    "id_produto": 2,
+                    "nome_produto": "SUPORTE PLACA DE MOTO",
+                    "quantidade": 10,
+                    "preco": 5.00,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_alteracao": "2021-01-01",
+                        "autor_alteracao": 1,
+                        "nome_autor_alteracao": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 3,
+                    "id_produto": 3,
+                    "nome_produto": "INJETADO MH 7620-002 ESQ",
+                    "quantidade": 10,
+                    "preco": 2.00,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_alteracao": "2021-01-01",
+                        "autor_alteracao": 1,
+                        "nome_autor_alteracao": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 4,
+                    "id_produto": 4,
+                    "nome_produto": "SUPORTE PLACA DE MOTO",
+                    "quantidade": 10,
+                    "preco": 5.00,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_alteracao": "2021-01-01",
+                        "autor_alteracao": 1,
+                        "nome_autor_alteracao": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "id_cliente": 2,
+            "nome_cliente": "AUTOMAKRO",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_previsao_entrega": "2021-01-15",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_entrega": "2021-01-15",
+                "autor_entrega": 1,
+                "nome_autor_entrega": "ADMIN",
+                "status": "Entregue",
+                "data_status": "2021-01-15",
+                "autor_status": 1,
+                "nome_autor_status": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            },
+            "itens": [
+                {
+                    "id": 5,
+                    "id_produto": 5,
+                    "nome_produto": "BARRA AMORTECEDORA 30mm",
+                    "quantidade": 10,
+                    "preco": 10.00,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_alteracao": "2021-01-01",
+                        "autor_alteracao": 1,
+                        "nome_autor_alteracao": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                }
+            ]
+        }
+    ]
+}

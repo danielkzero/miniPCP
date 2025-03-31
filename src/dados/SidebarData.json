@@ -1,0 +1,109 @@
+{
+    "menu": [
+        {
+            "id": 1,
+            "nome": "Dashboard",
+            "icon": "bx bx-home-circle",
+            "link": "/principal",
+            "description": "Visão geral do sistema"
+        },
+        {
+            "id": 2,
+            "nome": "Comercial",
+            "icon": "bx bx-store",
+            "description": "Processos de vendas e clientes",
+            "submenu": [
+                {
+                    "id": 21,
+                    "nome": "Pedidos",
+                    "link": "/pedidos",
+                    "description": "Todos os pedidos de venda"
+                },
+                {
+                    "id": 22,
+                    "nome": "Cadastro de Clientes",
+                    "link": "/lista_clientes",
+                    "description": "Todos os clientes"
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "nome": "Produção",
+            "icon": "bx bxs-factory",
+            "description": "Controle do chão de fábrica",
+            "submenu": [
+                {
+                    "id": 31,
+                    "nome": "Ordens de Produção",
+                    "link": "/ordem_producao",
+                    "description": "Acompanhamento de OP"
+                },
+                {
+                    "id": 32,
+                    "nome": "Registro de Entregas",
+                    "link": "/registro_entrega",
+                    "description": "Registro de entregas"
+                },
+                {
+                    "id": 33,
+                    "nome": "Anotações da Produção",
+                    "link": "/cadastro_observacao",
+                    "description": "Observações da produção"
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "nome": "Gestão de Produtos",
+            "icon": "bx bx-package",
+            "description": "Catálogo e inventário",
+            "submenu": [
+                {
+                    "id": 41,
+                    "nome": "Lista de Produtos",
+                    "link": "/lista_produtos",
+                    "description": "Catálogo completo"
+                },
+                {
+                    "id": 42,
+                    "nome": "Unidades de Medida",
+                    "link": "/unidades",
+                    "description": "Tipos de unidades"
+                },
+                {
+                    "id": 43,
+                    "nome": "Inventário Atual",
+                    "link": "/meu_estoque",
+                    "description": "Saldo de estoque"
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "nome": "Administração",
+            "icon": "bx bx-cog",
+            "description": "Configurações do sistema",
+            "submenu": [
+                {
+                    "id": 51,
+                    "nome": "Cadastro de Usuários",
+                    "link": "/usuarios",
+                    "description": "Gestão de acessos"
+                },
+                {
+                    "id": 52,
+                    "nome": "Perfis de Acesso",
+                    "link": "/usuario_nivel",
+                    "description": "Níveis de permissão"
+                },
+                {
+                    "id": 53,
+                    "nome": "Gerenciamento de Menus",
+                    "link": "/gerenciar_menus",
+                    "description": "Personalizar navegação"
+                }
+            ]
+        }
+    ]
+}

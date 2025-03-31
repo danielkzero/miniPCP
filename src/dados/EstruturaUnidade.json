@@ -1,0 +1,40 @@
+{
+    "unidade": [
+        {
+            "id_unidade": 1,
+            "nome_unidade": "UN",
+            "descricao": "UNIDADE",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id_unidade": 2,
+            "nome_unidade": "CX",
+            "descricao": "CAIXA",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

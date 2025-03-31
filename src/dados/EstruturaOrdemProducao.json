@@ -1,0 +1,227 @@
+{
+    "ordem_producao": [
+        {
+            "id": 1,
+            "codigo": "OP-000001",
+            "id_pedido": 1,
+            "id_pedido_item": 1,
+            "id_produto": 1,
+            "comentario": null,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            },
+            "ordem_servico": [
+                {
+                    "id": 1,
+                    "codigo": "OS-000001",
+                    "operacao": "CORTE",
+                    "tempo": 120,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    },
+                    "historico": [
+                        {
+                            "id": 1,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000001",
+                            "id_observacao": 1,
+                            "observacao": "INICIO DE LOTE",
+                            "quantidade": 0,
+                            "parada_almoco": false,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 15:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100004",
+                                "nome_autor_cadastro": "joao"
+                            }
+                        },
+                        {
+                            "id": 2,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000001",
+                            "id_observacao": 2,
+                            "observacao": "FIM DE LOTE",
+                            "quantidade": 1,
+                            "parada_almoco": true,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 16:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100004",
+                                "nome_autor_cadastro": "joao"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "id": 2,
+                    "codigo": "OS-000002",
+                    "operacao": "DOBRA",
+                    "tempo": 75,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    },
+                    "historico": [
+                        {
+                            "id": 3,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000002",
+                            "id_observacao": 1,
+                            "observacao": "INICIO DE LOTE",
+                            "quantidade": 0,
+                            "parada_almoco": false,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 15:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100002",
+                                "nome_autor_cadastro": "carlos"
+                            }
+                        },
+                        {
+                            "id": 4,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000002",
+                            "id_observacao": 2,
+                            "observacao": "FIM DE LOTE",
+                            "quantidade": 1,
+                            "parada_almoco": true,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 16:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100002",
+                                "nome_autor_cadastro": "carlos"
+                            }
+                        }
+                    ]
+        
+                },
+                {
+                    "id": 3,
+                    "codigo": "OS-000003",
+                    "operacao": "PINTURA",
+                    "tempo": 180,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    },
+                    "historico": [
+                        {
+                            "id": 5,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000003",
+                            "id_observacao": 1,
+                            "observacao": "INICIO DE LOTE",
+                            "quantidade": 0,
+                            "parada_almoco": false,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 15:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100003",
+                                "nome_autor_cadastro": "ana"
+                            }
+                        },
+                        {
+                            "id": 6,
+                            "id_maquina": 1,
+                            "numero_os": "OS-000003",
+                            "id_observacao": 2,
+                            "observacao": "FIM DE LOTE",
+                            "quantidade": 1,
+                            "parada_almoco": false,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 16:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100003",
+                                "nome_autor_cadastro": "ana"
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "codigo": "OP-000002",
+            "id_pedido": 1,
+            "id_pedido_item": 2,
+            "id_produto": 2,
+            "comentario": null,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            },
+            "ordem_servico": [
+                {
+                    "id": 4,
+                    "codigo": "OS-000004",
+                    "operacao": "CORTE",
+                    "tempo": 120,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    },
+                    "historico": [
+                        {
+                            "id": 7,
+                            "id_maquina": 1,
+                            "id_observacao": 5,
+                            "observacao": "PARADA DE MANUTENÇÃO",
+                            "quantidade": 0,
+                            "parada_almoco": false,
+                            "datas": {
+                                "data_cadastro": "2021-01-01 15:00:00",
+                                "autor_cadastro": 2,
+                                "codigo": "900100001",
+                                "nome_autor_cadastro": "carlos"
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

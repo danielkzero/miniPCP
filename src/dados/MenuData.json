@@ -1,0 +1,57 @@
+{
+  "menuItems": [
+    {
+      "label": "Solução",
+      "submenu": [
+        {
+          "icon": "bx bxs-factory",
+          "title": "Produção",
+          "description": "Controle suas ordens de produção e otimização de processos.",
+          "link": "/solucoes/producao"
+        },
+        {
+          "icon": "bx bx-box",
+          "title": "Estoque",
+          "description": "Gerencie insumos, matéria-prima e produtos acabados.",
+          "link": "/solucoes/estoque"
+        },
+        {
+          "icon": "bx bx-receipt",
+          "title": "Pedidos",
+          "description": "Automatize pedidos e acompanhe entregas em tempo real.",
+          "link": "/solucoes/pedidos"
+        },
+        {
+          "icon": "bx bx-line-chart",
+          "title": "Relatórios",
+          "description": "Dados estratégicos para melhor tomada de decisão.",
+          "link": "/solucoes/relatorios"
+        }
+      ],
+      "actions": [
+        {
+          "icon": "bx bx-play-circle",
+          "label": "Solicitar Demonstração",
+          "link": "/solucoes/solicitar_demo"
+        },
+        {
+          "icon": "bx bx-phone",
+          "label": "Fale conosco",
+          "link": "/paginas/contato"
+        }
+      ]
+    },
+    {
+      "label": "Funcionalidades",
+      "link": "/paginas/funcionalidades"
+    },
+    {
+      "label": "Planos e preços",
+      "link": "/paginas/planos_e_precos"
+    }
+  ],
+  "auth": {
+    "label": "Acessar Plataforma",
+    "link": "#"
+  }
+}
