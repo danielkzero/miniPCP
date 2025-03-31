@@ -1,8 +1,8 @@
 <template>
     <div>
-        <div class="flex justify-between items-center mb-6">
+        <div class="flex justify-between items-center mb-6 mx-4">
             <h1 class="text-2xl font-bold">Lista de Máquinas</h1>
-            <router-link to="/maquinas/novo" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+            <router-link to="/maquinas/novo" class="bg-indigo-500 hover:bg-indigo-600 text-white px-4 py-2 rounded">
                 Nova Máquina
             </router-link>
         </div>

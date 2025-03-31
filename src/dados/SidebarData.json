@@ -2,106 +2,174 @@
     "menu": [
         {
             "id": 1,
-            "nome": "Dashboard",
+            "nome": "Principal",
             "icon": "bx bx-home-circle",
             "link": "/principal",
-            "description": "Visão geral do sistema"
+            "description": "Página inicial do sistema"
         },
         {
             "id": 2,
-            "nome": "Comercial",
-            "icon": "bx bx-store",
-            "description": "Processos de vendas e clientes",
+            "nome": "Pedido de Venda",
+            "icon": "bx bx-basket",
+            "description": "Gerenciamento de pedidos de venda",
             "submenu": [
                 {
                     "id": 21,
-                    "nome": "Pedidos",
+                    "nome": "Lista de Pedidos",
                     "link": "/pedidos",
-                    "description": "Todos os pedidos de venda"
-                },
-                {
-                    "id": 22,
-                    "nome": "Cadastro de Clientes",
-                    "link": "/lista_clientes",
-                    "description": "Todos os clientes"
+                    "description": "Visualizar e gerenciar todos os pedidos"
                 }
             ]
         },
         {
             "id": 3,
             "nome": "Produção",
-            "icon": "bx bxs-factory",
-            "description": "Controle do chão de fábrica",
+            "icon": "bx bxs-component",
+            "description": "Controle das atividades de produção",
             "submenu": [
                 {
                     "id": 31,
-                    "nome": "Ordens de Produção",
+                    "nome": "Ordem de Produção",
                     "link": "/ordem_producao",
-                    "description": "Acompanhamento de OP"
+                    "description": "Gerenciar ordens de produção"
                 },
                 {
                     "id": 32,
-                    "nome": "Registro de Entregas",
+                    "nome": "Registro de Entrega",
                     "link": "/registro_entrega",
-                    "description": "Registro de entregas"
+                    "description": "Registrar entregas realizadas"
                 },
                 {
                     "id": 33,
-                    "nome": "Anotações da Produção",
+                    "nome": "Máquinas",
+                    "link": "/maquinas",
+                    "description": "Cadastro e gestão de equipamentos"
+                },
+                {
+                    "id": 34,
+                    "nome": "Observações",
                     "link": "/cadastro_observacao",
-                    "description": "Observações da produção"
+                    "description": "Registrar observações da produção"
                 }
             ]
         },
         {
             "id": 4,
-            "nome": "Gestão de Produtos",
-            "icon": "bx bx-package",
-            "description": "Catálogo e inventário",
+            "nome": "Centro de Trabalho",
+            "icon": "bx bxs-factory",
+            "description": "Gestão dos centros de trabalho",
             "submenu": [
                 {
                     "id": 41,
-                    "nome": "Lista de Produtos",
-                    "link": "/lista_produtos",
-                    "description": "Catálogo completo"
-                },
-                {
-                    "id": 42,
-                    "nome": "Unidades de Medida",
-                    "link": "/unidades",
-                    "description": "Tipos de unidades"
-                },
-                {
-                    "id": 43,
-                    "nome": "Inventário Atual",
-                    "link": "/meu_estoque",
-                    "description": "Saldo de estoque"
+                    "nome": "Máquinas em Uso",
+                    "link": "/maquinas_em_uso",
+                    "description": "Visualizar máquinas em operação"
                 }
             ]
         },
         {
             "id": 5,
-            "nome": "Administração",
-            "icon": "bx bx-cog",
-            "description": "Configurações do sistema",
+            "nome": "Produtos",
+            "icon": "bx bx-package",
+            "description": "Catálogo e gestão de produtos",
             "submenu": [
                 {
                     "id": 51,
-                    "nome": "Cadastro de Usuários",
-                    "link": "/usuarios",
-                    "description": "Gestão de acessos"
+                    "nome": "Lista de Produtos",
+                    "link": "/lista_produtos",
+                    "description": "Gerenciar catálogo de produtos"
                 },
                 {
                     "id": 52,
-                    "nome": "Perfis de Acesso",
-                    "link": "/usuario_nivel",
-                    "description": "Níveis de permissão"
+                    "nome": "Unidades",
+                    "link": "/unidades",
+                    "description": "Definir unidades de medida"
                 },
                 {
                     "id": 53,
-                    "nome": "Gerenciamento de Menus",
+                    "nome": "Grupos",
+                    "link": "/grupos",
+                    "description": "Organizar produtos por grupos"
+                },
+                {
+                    "id": 54,
+                    "nome": "Setores",
+                    "link": "/setores",
+                    "description": "Dividir produtos por setores"
+                },
+                {
+                    "id": 55,
+                    "nome": "Operações",
+                    "link": "/operacoes",
+                    "description": "Definir fluxos operacionais"
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "nome": "Estoque",
+            "icon": "bx bxs-package",
+            "description": "Controle de estoque",
+            "submenu": [
+                {
+                    "id": 61,
+                    "nome": "Meu Estoque",
+                    "link": "/meu_estoque",
+                    "description": "Visualizar saldo atual do estoque"
+                },
+                {
+                    "id": 62,
+                    "nome": "Histórico de Estoque",
+                    "link": "/historico_estoque",
+                    "description": "Consultar histórico de movimentações"
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "nome": "Clientes",
+            "icon": "bx bx-face",
+            "description": "Gestão de clientes",
+            "submenu": [
+                {
+                    "id": 71,
+                    "nome": "Lista de Clientes",
+                    "link": "/lista_clientes",
+                    "description": "Gerenciar cadastro de clientes"
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "nome": "Usuários",
+            "icon": "bx bx-user",
+            "description": "Gestão de usuários e permissões",
+            "submenu": [
+                {
+                    "id": 81,
+                    "nome": "Usuários",
+                    "link": "/usuarios",
+                    "description": "Gerenciar cadastro de usuários"
+                },
+                {
+                    "id": 82,
+                    "nome": "Nível de Usuário",
+                    "link": "/usuario_nivel",
+                    "description": "Definir níveis de acesso"
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "nome": "Menus",
+            "icon": "bx bx-menu",
+            "description": "Personalização de menus",
+            "submenu": [
+                {
+                    "id": 91,
+                    "nome": "Gerenciar Menus",
                     "link": "/gerenciar_menus",
-                    "description": "Personalizar navegação"
+                    "description": "Configurar navegação do sistema"
                 }
             ]
         }

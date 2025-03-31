@@ -16,7 +16,7 @@ const router = createRouter({
           component: () => import('@/views/publico/PlanosPrecosView.vue'),
         },
         {
-          path: '/maquinas',
+          path: '/maquinas_em_uso',
           component: () => import('@/views/privado/maquinas/MaquinasView.vue'),
         },
         {
@@ -26,6 +26,10 @@ const router = createRouter({
         {
           path: '/maquinas/editar/:id',
           component: () => import('@/views/privado/maquinas/MaquinaEdit.vue'),
+        },
+        {
+          path: '/pedidos',
+          component: () => import('@/views/privado/pedidos/PedidosView.vue'),
         }
       ],
     },
