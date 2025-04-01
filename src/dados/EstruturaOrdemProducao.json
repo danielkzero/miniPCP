@@ -4,13 +4,26 @@
             "id": 1,
             "codigo": "OP-000001",
             "id_pedido": 1,
+            "codigo_pedido": "MP-000001",
+            "id_cliente": 1,
+            "nome_cliente": "CONSMETAL",
             "id_pedido_item": 1,
+            "codigo_pedido_item": "MI-000001",
             "id_produto": 1,
+            "codigo_produto": "100800100",
+            "descricao_produto": "SUPORTE PLACA DE MOTO",
+            "quantidade_pedida": 10,
+            "quantidade_produzida": 0,
+            "quantidade_estoque": 100,
+            "quantidade_disponivel": 100,
             "comentario": null,
             "datas": {
                 "data_cadastro": "2021-01-01",
                 "autor_cadastro": 1,
                 "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-01",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
                 "data_alteracao": "2021-01-01",
                 "autor_alteracao": 1,
                 "nome_autor_alteracao": "ADMIN",
@@ -171,14 +184,27 @@
         {
             "id": 2,
             "codigo": "OP-000002",
-            "id_pedido": 1,
+            "id_pedido": 2,
+            "codigo_pedido": "MP-000002",
+            "id_cliente": 2,
+            "nome_cliente": "AUTOMAÇÃO",
             "id_pedido_item": 2,
+            "codigo_pedido_item": "MI-000002",
             "id_produto": 2,
+            "codigo_produto": "100800200",
+            "descricao_produto": "SUPORTE PLACA DE CARRO",
+            "quantidade_pedida": 5,
+            "quantidade_produzida": 0,
+            "quantidade_estoque": 50,
+            "quantidade_disponivel": 50,
             "comentario": null,
             "datas": {
                 "data_cadastro": "2021-01-01",
                 "autor_cadastro": 1,
                 "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-01",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
                 "data_alteracao": "2021-01-01",
                 "autor_alteracao": 1,
                 "nome_autor_alteracao": "ADMIN",
@@ -192,8 +218,8 @@
                 {
                     "id": 4,
                     "codigo": "OS-000004",
-                    "operacao": "CORTE",
-                    "tempo": 120,
+                    "operacao": "LAMINAÇÃO",
+                    "tempo": 90,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -207,21 +233,76 @@
                     "historico": [
                         {
                             "id": 7,
-                            "id_maquina": 1,
-                            "id_observacao": 5,
-                            "observacao": "PARADA DE MANUTENÇÃO",
+                            "id_maquina": 2,
+                            "numero_os": "OS-000004",
+                            "id_observacao": 1,
+                            "observacao": "INICIO DE LOTE",
                             "quantidade": 0,
                             "parada_almoco": false,
                             "datas": {
                                 "data_cadastro": "2021-01-01 15:00:00",
                                 "autor_cadastro": 2,
-                                "codigo": "900100001",
-                                "nome_autor_cadastro": "carlos"
+                                "codigo": "900100005",
+                                "nome_autor_cadastro": "maria"
                             }
+                        }
+                    ],
+                    "ordem_servico_item": [
+                        {
+                            "id": 8,
+                            "id_ordem_servico": 4,
+                            "id_produto": 2,
+                            "codigo_produto": "100800200",
+                            "descricao_produto": "SUPORTE PLACA DE CARRO",
+                            "quantidade": 5,
+                            "datas": {
+                                "data_cadastro": "2021-01-01",
+                                "autor_cadastro": 1,
+                                "nome_autor_cadastro": "ADMIN",
+                                "data_exclusao": null,
+                                "autor_exclusao": null,
+                                "nome_autor_exclusao": null,
+                                "motivo_exclusao": null,
+                                "excluido": false
+                            },
+                            "ordem_servico_item_historico": [
+                                {
+                                    "id": 9,
+                                    "id_ordem_servico_item": 8,
+                                    "id_maquina": 2,
+                                    "numero_os": "OS-000004",
+                                    "id_observacao": 1,
+                                    "observacao": "INICIO DE LOTE",
+                                    "quantidade": 0,
+                                    "parada_almoco": false,
+                                    "datas": {
+                                        "data_cadastro": "2021-01-01 15:00:00",
+                                        "autor_cadastro": 2,
+                                        "codigo": "900100005",
+                                        "nome_autor_cadastro": "maria"
+                                    }
+                                },
+                                {
+                                    "id": 10,
+                                    "id_ordem_servico_item": 8,
+                                    "id_maquina": 2,
+                                    "numero_os": "OS-000004",
+                                    "id_observacao": 2,
+                                    "observacao": "FIM DE LOTE",
+                                    "quantidade": 5,
+                                    "parada_almoco": false,
+                                    "datas": {
+                                        "data_cadastro": "2021-01-01 16:00:00",
+                                        "autor_cadastro": 2,
+                                        "codigo": "900100005",
+                                        "nome_autor_cadastro": "maria"
+                                    }
+                                }
+                            ]
                         }
                     ]
                 }
-            ]
+            ]                
         }
     ]
 }

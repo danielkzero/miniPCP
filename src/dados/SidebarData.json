@@ -11,12 +11,13 @@
             "id": 2,
             "nome": "Pedido de Venda",
             "icon": "bx bx-basket",
+            "link_name": "/pedidos",
             "description": "Gerenciamento de pedidos de venda",
             "submenu": [
                 {
                     "id": 21,
                     "nome": "Lista de Pedidos",
-                    "link": "/pedidos",
+                    "link": "/pedidos/lista",
                     "description": "Visualizar e gerenciar todos os pedidos"
                 }
             ]
@@ -24,31 +25,32 @@
         {
             "id": 3,
             "nome": "Produção",
+            "link_name": "/producao",
             "icon": "bx bxs-component",
             "description": "Controle das atividades de produção",
             "submenu": [
                 {
                     "id": 31,
                     "nome": "Ordem de Produção",
-                    "link": "/ordem_producao",
+                    "link": "/producao/ordem_producao",
                     "description": "Gerenciar ordens de produção"
                 },
                 {
                     "id": 32,
                     "nome": "Registro de Entrega",
-                    "link": "/registro_entrega",
+                    "link": "/producao/registro_entrega",
                     "description": "Registrar entregas realizadas"
                 },
                 {
                     "id": 33,
                     "nome": "Máquinas",
-                    "link": "/maquinas",
+                    "link": "/producao/maquinas",
                     "description": "Cadastro e gestão de equipamentos"
                 },
                 {
                     "id": 34,
                     "nome": "Observações",
-                    "link": "/cadastro_observacao",
+                    "link": "/producao/cadastro_observacao",
                     "description": "Registrar observações da produção"
                 }
             ]
