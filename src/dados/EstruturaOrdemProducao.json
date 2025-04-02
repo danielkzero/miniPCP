@@ -39,6 +39,7 @@
                     "codigo": "OS-000001",
                     "operacao": "CORTE",
                     "tempo": 120,
+                    "pronto": 2,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -87,6 +88,7 @@
                     "codigo": "OS-000002",
                     "operacao": "DOBRA",
                     "tempo": 75,
+                    "pronto": 2,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -136,6 +138,7 @@
                     "codigo": "OS-000003",
                     "operacao": "PINTURA",
                     "tempo": 180,
+                    "pronto": 2,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -220,6 +223,7 @@
                     "codigo": "OS-000004",
                     "operacao": "LAMINAÇÃO",
                     "tempo": 90,
+                    "pronto": 2,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,

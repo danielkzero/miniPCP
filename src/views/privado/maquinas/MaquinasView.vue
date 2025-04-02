@@ -1,6 +1,7 @@
 <template>
     <div>
-        <DataTable :data="maquinas" :columns="columns" classTable="text-xs" />
+        <DataTable :data="maquinas" :columns="columns" classTable="text-xs" @deleteItem="handleDeleteItem"
+            @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
     </div>
 </template>
 <script>
@@ -30,6 +31,15 @@ export default {
         formatCurrency(value) {
             return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value)
         },
+        handleDeleteItem(id) {
+            console.log(`Máquina ${id}`);
+        },
+        handleEditItem(id) {
+            console.log(`Máquina ${id} editada`);
+        },
+        handleCreateItem(id) {
+            console.log(`Nova Máquina ${id} criada`);
+        }
     },
 }
 </script>

@@ -9,8 +9,8 @@ const router = createRouter({
       component: () => import('@/views/publico/PrincipalView.vue'),
       children: [
         {
-          path: '/maquinas_em_uso',
-          name: 'Máquinas em uso',
+          path: '/producao/maquinas',
+          name: 'Máquinas',
           component: () => import('@/views/privado/maquinas/MaquinasView.vue'),
         },
         {

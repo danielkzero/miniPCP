@@ -1,8 +1,8 @@
 <template>
     <div>
         <!-- Search and Add Button -->
-        <div class="flex justify-between mb-4 mx-4" v-if="pesquisar">
-            <div class="relative mt-1 lg:w-90">
+        <div class="flex justify-between mb-4 mx-4" v-if="pesquisar || $attrs.onCreateItem">
+            <div class="relative mt-1 lg:w-90" v-if="pesquisar">
                 <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -15,8 +15,8 @@
                     class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                     placeholder="Procurar...">
             </div>
-            <button @click="$router.push(urlCriar)" class="bg-indigo-500 text-white px-4 py-2 rounded" v-if="urlCriar">
-                Cadastrar
+            <button @click="createItem" class="bg-indigo-500 text-white px-4 py-2 rounded" v-if="$attrs.onCreateItem">
+                Novo
             </button>
         </div>
 
@@ -24,6 +24,9 @@
         <table class="min-w-full divide-y divide-gray-200" :class="classTable">
             <thead class="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <tr>
+                    <th class="px-6 py-3" v-if="filhos">
+                        <i class='bx bx-plus text-xl text-gray-300'></i>
+                    </th>
                     <th v-for="col in columns" :key="col.key" class="px-6 py-3 cursor-pointer" @click="sortBy(col.key)">
                         {{ col.label }}
                         <i v-if="sortKey === col.key"
@@ -33,39 +36,102 @@
                 </tr>
             </thead>
             <tbody class="divide-y divide-gray-200">
-                <tr v-for="item in paginatedData" :key="item.id" class="odd:bg-white even:bg-gray-50">
-                    <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap">
-                        <template v-if="vetifyType(item, col)?.isHtml">
-                            <span v-html="vetifyType(item, col).content">
-                            </span>
-                        </template>
-                        <template v-else>
-                            {{ vetifyType(item, col) }}
-                        </template>
-                    </td>
-                    <td class="px-6 py-2 flex space-x-1" v-if="actions">
-                        <button @click="$router.push(urlEditar + '/' + item.id)"
-                            class="bg-yellow-500 text-white px-2 py-1 rounded" v-if="urlEditar">
-                            <i class="bx bxs-edit"></i>
-                        </button>
-                        <button @click="hideItem(item.id)" class="bg-gray-500 text-white px-2 py-1 rounded"
-                            v-if="$attrs.onHideItem">
-                            <i class='bx bxs-hide'></i>
-                        </button>
-                        <button @click="commentItem(item.id)" class="bg-blue-500 text-white px-2 py-1 rounded"
-                            v-if="$attrs.onCommentItem">
-                            <i class="bx bx-message-square-dots"></i>
-                        </button>
-                        <button @click="printItem(item.id)" class="bg-indigo-500 text-white px-2 py-1 rounded"
-                            v-if="$attrs.onPrintItem">
-                            <i class="bx bx-printer"></i>
-                        </button>
-                        <button @click="deleteItem(item.id)" class="bg-red-500 text-white px-2 py-1 rounded"
-                            v-if="$attrs.onDeleteItem">
-                            <i class="bx bx-trash"></i>
-                        </button>
-                    </td>
-                </tr>
+                <template v-for="item in paginatedData" :key="item.id">
+                    <tr class="odd:bg-white even:bg-gray-50">
+                        <td class="px-6 py-2 whitespace-nowrap w-1 h-1" v-if="filhos" @click="toggleChildren(item.id)">
+                            <i class='bx bx-plus text-xl text-indigo-600 hover:text-indigo-700 cursor-pointer'></i>
+                        </td>
+                        <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap">
+                            <template v-if="vetifyType(item, col)?.isHtml">
+                                <span v-html="vetifyType(item, col).content">
+                                </span>
+                            </template>
+                            <template v-else>
+                                {{ vetifyType(item, col) }}
+                            </template>
+                        </td>
+                        <td class="px-6 py-2 flex space-x-1" v-if="actions">
+                            <button @click="editItem(item.id)" class="bg-yellow-500 text-white px-2 py-1 rounded"
+                                v-if="$attrs.onEditItem">
+                                <i class="bx bxs-edit"></i>
+                            </button>
+                            <button @click="hideItem(item.id)" class="bg-gray-500 text-white px-2 py-1 rounded"
+                                v-if="$attrs.onHideItem">
+                                <i class='bx bxs-hide'></i>
+                            </button>
+                            <button @click="commentItem(item.id)" class="bg-blue-500 text-white px-2 py-1 rounded"
+                                v-if="$attrs.onCommentItem">
+                                <i class="bx bx-message-square-dots"></i>
+                            </button>
+                            <button @click="printItem(item.id)" class="bg-indigo-500 text-white px-2 py-1 rounded"
+                                v-if="$attrs.onPrintItem">
+                                <i class="bx bx-printer"></i>
+                            </button>
+                            <button @click="deleteItem(item.id)" class="bg-red-500 text-white px-2 py-1 rounded"
+                                v-if="$attrs.onDeleteItem">
+                                <i class="bx bx-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                    <Transition enter-active-class="transition-all duration-200 ease-out"
+                        leave-active-class="transition-all duration-150 ease-in" enter-from-class="opacity-0 scale-95"
+                        enter-to-class="opacity-100 scale-100" leave-from-class="opacity-100 scale-100"
+                        leave-to-class="opacity-0 scale-95">
+                        <tr v-if="expandedRows[item.id]">
+                            <td :colspan="columns.length + (filhos ? 1 : 0) + (actions ? 1 : 0)" class="ps-6 pb-2">
+
+                                <table class="min-w-full divide-y divide-gray-300 rounded-2xl" :class="classTable">
+                                    <thead
+                                        class="bg-gray-100 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        <tr>
+                                            <th v-for="col in subcolumns" :key="col.key"
+                                                class="px-6 py-3 cursor-pointer">
+                                                {{ col.label }}
+                                            </th>
+                                            <th class="px-6 py-3" v-if="$attrs.onGerarOP">Ações</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-gray-200 text-gray-500">
+                                        <template v-for="subItem in item[subcolumn_name]" :key="subItem.id">
+                                            <tr class="odd:bg-gray-50 even:bg-gray-50">
+                                                <td v-for="col in subcolumns" :key="col.key"
+                                                    class="px-6 py-2 whitespace-nowrap">
+                                                    <span v-if="col.onClick" @click="col.onClick(subItem)">
+                                                        <template v-if="vetifyType(subItem, col)?.isHtml">
+                                                            <span v-html="vetifyType(subItem, col).content">
+                                                            </span>
+                                                        </template>
+                                                        <template v-else>
+                                                            <span
+                                                                class="underline text-indigo-500 hover:text-indigo-700 cursor-pointer">{{
+                                                                    vetifyType(subItem, col) }}</span>
+                                                        </template>
+                                                    </span>
+
+                                                    <span v-else>
+                                                        <template v-if="vetifyType(subItem, col)?.isHtml">
+                                                            <span v-html="vetifyType(subItem, col).content">
+                                                            </span>
+                                                        </template>
+                                                        <template v-else>
+                                                            {{ vetifyType(subItem, col) }}
+                                                        </template>
+                                                    </span>
+                                                </td>
+                                                <td class="px-6 py-2 flex space-x-1" v-if="$attrs.onGerarItem">
+                                                    <button @click="gerarItem(subItem.id)"
+                                                        class="bg-indigo-500 text-white px-2 py-1 rounded">
+                                                        Gerar ordem de produção <i class='bx bx-chevron-right'></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    </Transition>
+                </template>
             </tbody>
         </table>
 
@@ -92,11 +158,12 @@ export default {
     props: {
         data: Array,
         columns: Array,
+        subcolumns: Array,
+        subcolumn_name: String,
         actions: Boolean,
+        filhos: Boolean,
         pesquisar: Boolean,
         pagination: Boolean,
-        urlCriar: String,
-        urlEditar: String,
         classTable: String
     },
     data() {
@@ -105,7 +172,8 @@ export default {
             sortKey: "id",
             sortOrder: "asc",
             currentPage: 1,
-            itemsPerPage: 10
+            itemsPerPage: 10,
+            expandedRows: {} // Armazena o estado de expansão
         };
     },
     computed: {
@@ -133,6 +201,11 @@ export default {
         }
     },
     methods: {
+        toggleChildren(rowId) {
+            this.expandedRows[rowId] = !this.expandedRows[rowId];
+        },
+
+
         searchPredicate(item) {
             const searchTerm = this.search.toLowerCase();
             return this.columns.some(col => {
@@ -176,6 +249,14 @@ export default {
                     return this.formatData(value);
                 case "currency":
                     return this.formatCurrency(value);
+                case "time":
+                    return this.formatDuration(value);
+                case "status":
+                    let className = "text-gray-700";
+                    if (value.toLowerCase() == 'entregue') {
+                        className = "text-green-700";
+                    }
+                    return { isHtml: true, content: `<div class="${className}">${value}</div>` }
                 case "image":
                     return { isHtml: true, content: `<img src="${value}" alt="${value}" class="h-10 w-10 p-1" />` };
                 default:
@@ -187,6 +268,29 @@ export default {
             return moment(value).format("DD/MM/YYYY");
         },
 
+        formatDuration(seconds) {
+            const duration = moment.duration(seconds, 'seconds');
+            const parts = [];
+
+            const days = duration.days();
+            if (days > 0) parts.push(`${days} ${days > 1 ? 'dias' : 'dia'}`);
+
+            const hours = duration.hours();
+            if (hours > 0) parts.push(`${hours} ${hours > 1 ? 'horas' : 'hora'}`);
+
+            const minutes = duration.minutes();
+            if (minutes > 0) parts.push(`${minutes} ${minutes > 1 ? 'minutos' : 'minuto'}`);
+
+            const secs = duration.seconds();
+            if (secs > 0) parts.push(`${secs} ${secs > 1 ? 'segundos' : 'segundo'}`);
+
+            if (parts.length === 0) return '0 segundos';
+            if (parts.length === 1) return parts[0];
+
+            // Junta os elementos com vírgulas e adiciona "e" antes do último
+            return parts.slice(0, -1).join(', ') + ' e ' + parts[parts.length - 1];
+        },
+
         formatCurrency(value) {
             return value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
         },
@@ -196,6 +300,16 @@ export default {
             this.sortKey = key;
         },
 
+        gerarItem(id) {
+            this.$emit("gerarItem", id);
+        },
+        createItem() {
+            this.$emit("createItem");
+        },
+
+        editItem(id) {
+            this.$emit("editItem", id);
+        },
         deleteItem(id) {
             this.$swal.fire({
                 title: "Tem certeza?",

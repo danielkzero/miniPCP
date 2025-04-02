@@ -11,13 +11,13 @@
                 "data_alteracao": "2021-01-01",
                 "autor_alteracao": 1,
                 "nome_autor_alteracao": "ADMIN",
-                "data_previsao_entrega": "2021-01-15",
+                "data_previsao_entrega": "2021-02-01",
                 "autor_previsao_entrega": 1,
                 "nome_autor_previsao_entrega": "ADMIN",
                 "data_entrega": "2021-01-15",
                 "autor_entrega": 1,
                 "nome_autor_entrega": "ADMIN",
-                "status": "Entregue",
+                "status": "Em produção",
                 "data_status": "2021-01-15",
                 "autor_status": 1,
                 "nome_autor_status": "ADMIN",
@@ -31,8 +31,10 @@
                 {
                     "id": 1,
                     "id_produto": 1,
+                    "codigo_produto": "100100102",
                     "nome_produto": "BARRA AMORTECEDORA 30mm",
                     "quantidade": 10,
+                    "entregue": 0,
                     "preco": 10.00,
                     "datas": {
                         "data_cadastro": "2021-01-01",
@@ -51,8 +53,10 @@
                 {
                     "id": 2,
                     "id_produto": 2,
+                    "codigo_produto": "100100101",
                     "nome_produto": "SUPORTE PLACA DE MOTO",
                     "quantidade": 10,
+                    "entregue": 0,
                     "preco": 5.00,
                     "datas": {
                         "data_cadastro": "2021-01-01",
@@ -71,9 +75,11 @@
                 {
                     "id": 3,
                     "id_produto": 3,
+                    "codigo_produto": "100100100",
                     "nome_produto": "INJETADO MH 7620-002 ESQ",
                     "quantidade": 10,
                     "preco": 2.00,
+                    "entregue": 0,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -91,9 +97,11 @@
                 {
                     "id": 4,
                     "id_produto": 4,
+                    "codigo_produto": "100100105",
                     "nome_produto": "SUPORTE PLACA DE MOTO",
                     "quantidade": 10,
                     "preco": 5.00,
+                    "entregue": 0,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
@@ -141,9 +149,11 @@
                 {
                     "id": 5,
                     "id_produto": 5,
+                    "codigo_produto": "100100102",
                     "nome_produto": "BARRA AMORTECEDORA 30mm",
                     "quantidade": 10,
                     "preco": 10.00,
+                    "entregue": 0,
                     "datas": {
                         "data_cadastro": "2021-01-01",
                         "autor_cadastro": 1,
