@@ -251,6 +251,16 @@ export default {
                     return this.formatCurrency(value);
                 case "time":
                     return this.formatDuration(value);
+                case "YesOrNo":
+                    return value ? { isHtml: true, content: `<i class="bx bx-check text-xl text-green-500"></i>` } : { isHtml: true, content: `<i class="bx bx-x text-xl text-red-500"></i>` };
+                case "progressbar":
+                    return {
+                        isHtml: true, content: `
+                        <div class="w-full bg-gray-200 rounded-full h-2 relative bg-amber-500">
+                            <div class="${this.formatPercentProgress(value)} h-2 rounded-full text-center text-white font-bold flex items-center justify-center"
+                                style="width: ${value ?? 0}%;">
+                            </div>
+                        </div>` };
                 case "status":
                     let className = "text-gray-700";
                     if (value.toLowerCase() == 'entregue') {
@@ -261,6 +271,22 @@ export default {
                     return { isHtml: true, content: `<img src="${value}" alt="${value}" class="h-10 w-10 p-1" />` };
                 default:
                     return value ?? "";
+            }
+        },
+
+        formatPercentProgress(value) {
+            switch (true) {
+                case value < 30:
+                    return "bg-red-500";
+                case value < 50:
+                    return "bg-amber-500";
+                case value < 70:
+                    return "bg-yellow-500";
+                case value < 90:
+                    return "bg-blue-500";
+                case value < 100:
+                    return "bg-indigo-500";
+                default: "bg-indigo-500";
             }
         },
 

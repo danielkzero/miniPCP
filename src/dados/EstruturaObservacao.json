@@ -1,0 +1,172 @@
+{
+    "observacao": [
+        {
+            "id": 1,
+            "observacao": "INICIO DE LOTE",
+            "parada": 0,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-01",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 2,
+            "observacao": "FIM DE TURNO",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-03",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-03",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-03",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 3,
+            "observacao": "PARADA PARA JANTA",
+            "parada": 0,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 4,
+            "observacao": "PARADA PARA ALMOÇO",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 5,
+            "observacao": "PARADA DE MANUTENÇÃO",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 6,
+            "observacao": "TROCA DE OPERADOR",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 7,
+            "observacao": "FIM DE LOTE",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 8,
+            "observacao": "MUDANÇA DE CRONOGRAMA",
+            "parada": 1,
+            "datas": {
+                "data_cadastro": "2021-01-02",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_previsao_entrega": "2021-01-02",
+                "autor_previsao_entrega": 1,
+                "nome_autor_previsao_entrega": "ADMIN",
+                "data_alteracao": "2021-01-02",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

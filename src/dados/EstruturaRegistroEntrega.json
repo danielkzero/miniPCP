@@ -1,0 +1,104 @@
+{
+    "registro_entrega": [
+        {
+            "codigo_registro_entrega": 800100450,
+            "id": 450,
+            "nome": "BODEMEIER",
+            "codigo_pedido": "MP-000471",
+            "codigo_ordem_producao": "OP-001094",
+            "codigo": 100100497,
+            "nome_produto": "N2-01-TPU APOIO COM PINO_1",
+            "quantidade_emitida": 940,
+            "quantidade_total": 1940,
+            "peso": 0.042,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "codigo_registro_entrega": 800100450,
+            "id": 451,
+            "nome": "BODEMEIER",
+            "codigo_pedido": "MP-000471",
+            "codigo_ordem_producao": "OP-001094",
+            "codigo": 100100498,
+            "nome_produto": "N2-01-TPU APOIO COM PINO_2",
+            "quantidade_emitida": 960,
+            "quantidade_total": 1960,
+            "peso": 0.043,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false    
+            }
+        },
+        {
+            "codigo_registro_entrega": 800100451,
+            "id": 452,
+            "nome": "BODEMEIER",
+            "codigo_pedido": "MP-000471",
+            "codigo_ordem_producao": "OP-001094",
+            "codigo": 100100499,
+            "nome_produto": "N2-01-TPU APOIO COM PINO_3",
+            "quantidade_emitida": 980,
+            "quantidade_total": 1980,
+            "peso": 0.044,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "codigo_registro_entrega": 800100451,
+            "id": 453,
+            "nome": "BODEMEIER",
+            "codigo_pedido": "MP-000471",
+            "codigo_ordem_producao": "OP-001094",
+            "codigo": 100100500,
+            "nome_produto": "N2-01-TPU APOIO COM PINO_4",
+            "quantidade_emitida": 1000,
+            "quantidade_total": 2000,
+            "peso": 0.045,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": "2021-01-01",
+                "autor_alteracao": 1,
+                "nome_autor_alteracao": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false    
+            }
+        }
+    ]
+}

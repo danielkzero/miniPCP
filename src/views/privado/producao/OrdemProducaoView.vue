@@ -27,6 +27,7 @@ export default {
                 { key: "quantidade_pedida", label: "Qtd.", type: "number" },
                 { key: "quantidade_produzida", label: "Ent.", type: "number" },
                 { key: "datas.data_previsao_entrega", label: "Prev. Entrega", type: "date" },
+                { key: "percentual_produzido", label: "progresso", type: "progressbar" }
             ],
             subcolumn_name: "ordem_servico",
             subcolumns: [

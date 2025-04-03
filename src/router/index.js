@@ -32,6 +32,16 @@ const router = createRouter({
           path: '/producao/ordem_producao',
           name: 'Ordem de produção',
           component: () => import('@/views/privado/producao/OrdemProducaoView.vue'),
+        },
+        {
+          path: '/producao/cadastro_observacao',
+          name: 'Cadastro de observações',
+          component: () => import('@/views/privado/producao/CadastroObservacaoView.vue'),
+        },
+        {
+          path: '/producao/registro_entrega',
+          name: 'Registro de entrega',
+          component: () => import('@/views/privado/producao/RegistroEntregaView.vue'),
         }
       ],
     },
