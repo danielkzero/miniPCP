@@ -42,6 +42,16 @@ const router = createRouter({
           path: '/producao/registro_entrega',
           name: 'Registro de entrega',
           component: () => import('@/views/privado/producao/RegistroEntregaView.vue'),
+        },
+        {
+          path: '/producao/registro_entrega/:id',
+          name: 'Protocolo de registro de entrega',
+          component: () => import('@/views/privado/producao/ProtocoloRegistroEntregaView.vue'),
+        },
+        {
+          path: '/centro_de_trabalho/maquinas_em_uso',
+          name: 'Máquinas em uso',
+          component: () => import('@/views/privado/centrotrabalho/MaquinaEmUsoView.vue'),
         }
       ],
     },

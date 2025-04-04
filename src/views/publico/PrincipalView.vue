@@ -2,7 +2,7 @@
     <header>
         <Navbar :menu-data="menuData" />
     </header>
-    <div class="pt-16 overflow-hidden bg-gray-100 h-screen dark:bg-gray-900">
+    <div class="pt-16 bg-gray-100 h-screen dark:bg-gray-900">
         <sidebar-menu :SidebarData="SidebarData"></sidebar-menu>
         <main class="p-0 sm:ml-64">
             <div class="">

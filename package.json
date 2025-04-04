@@ -12,6 +12,7 @@
   "dependencies": {
     "@storefront-ui/vue": "^2.6.5",
     "@tailwindcss/vite": "^4.0.17",
+    "animate.css": "^4.1.1",
     "boxicons": "^2.1.4",
     "moment": "^2.30.1",
     "pinia": "^3.0.1",

@@ -64,7 +64,7 @@
                 {
                     "id": 41,
                     "nome": "Máquinas em Uso",
-                    "link": "/maquinas_em_uso",
+                    "link": "/centro_de_trabalho/maquinas_em_uso",
                     "description": "Visualizar máquinas em operação"
                 }
             ]

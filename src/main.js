@@ -10,6 +10,7 @@ import router from './router';
 import 'boxicons';
 import 'boxicons/css/boxicons.min.css';
 import Swal from 'sweetalert2';
+import 'animate.css';
 
 const app = createApp(App);
 
