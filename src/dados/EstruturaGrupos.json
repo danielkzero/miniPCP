@@ -1,0 +1,172 @@
+{
+    "grupos": [
+        {
+            "id": 1,
+            "id_pai": null,
+            "sufixo": "1001",
+            "nome": "INJEÇÃO SIMPLES",
+            "descricao": "Grupo de injeção simples",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 2,
+            "id_pai": null,
+            "sufixo": "1002",
+            "nome": "USINADOS",
+            "descricao": "Grupo de usinados",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 3,
+            "id_pai": null,
+            "sufixo": "1003",
+            "nome": "INJEÇÃO HÍBRIDA",
+            "descricao": "Grupo de injeção híbrida",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 4,
+            "id_pai": null,
+            "sufixo": "1004",
+            "nome": "MATÉRIA PRIMA",
+            "descricao": "Grupo de matéria prima",
+            "materia_prima": true,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 5,
+            "id_pai": null,
+            "sufixo": "1005",
+            "nome": "CLIENTES",
+            "descricao": "",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 6,
+            "id_pai": null,
+            "sufixo": "1006",
+            "nome": "GRUPO 2000",
+            "descricao": "",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 7,
+            "id_pai": null,
+            "sufixo": "1007",
+            "nome": "GRUPO ACESSÓRIOS",
+            "descricao": "",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 8,
+            "id_pai": null,
+            "sufixo": "6000",
+            "nome": "FERRAMENTAS",
+            "descricao": "",
+            "materia_prima": false,
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

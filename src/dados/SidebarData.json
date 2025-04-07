@@ -58,6 +58,7 @@
         {
             "id": 4,
             "nome": "Centro de Trabalho",
+            "link_name": "/centro_de_trabalho",
             "icon": "bx bxs-factory",
             "description": "Gestão dos centros de trabalho",
             "submenu": [
@@ -72,37 +73,38 @@
         {
             "id": 5,
             "nome": "Produtos",
+            "link_name": "/produtos",
             "icon": "bx bx-package",
             "description": "Catálogo e gestão de produtos",
             "submenu": [
                 {
                     "id": 51,
                     "nome": "Lista de Produtos",
-                    "link": "/lista_produtos",
+                    "link": "/produtos/lista",
                     "description": "Gerenciar catálogo de produtos"
                 },
                 {
                     "id": 52,
                     "nome": "Unidades",
-                    "link": "/unidades",
+                    "link": "/produtos/unidades",
                     "description": "Definir unidades de medida"
                 },
                 {
                     "id": 53,
                     "nome": "Grupos",
-                    "link": "/grupos",
+                    "link": "/produtos/grupos",
                     "description": "Organizar produtos por grupos"
                 },
                 {
                     "id": 54,
                     "nome": "Setores",
-                    "link": "/setores",
+                    "link": "/produtos/setores",
                     "description": "Dividir produtos por setores"
                 },
                 {
                     "id": 55,
                     "nome": "Operações",
-                    "link": "/operacoes",
+                    "link": "/produtos/operacoes",
                     "description": "Definir fluxos operacionais"
                 }
             ]
@@ -110,19 +112,20 @@
         {
             "id": 6,
             "nome": "Estoque",
+            "link_name": "/estoques",
             "icon": "bx bxs-package",
             "description": "Controle de estoque",
             "submenu": [
                 {
                     "id": 61,
                     "nome": "Meu Estoque",
-                    "link": "/meu_estoque",
+                    "link": "/estoques/lista",
                     "description": "Visualizar saldo atual do estoque"
                 },
                 {
                     "id": 62,
                     "nome": "Histórico de Estoque",
-                    "link": "/historico_estoque",
+                    "link": "/estoques/historico",
                     "description": "Consultar histórico de movimentações"
                 }
             ]
@@ -130,13 +133,14 @@
         {
             "id": 7,
             "nome": "Clientes",
+            "link_name": "/clientes",
             "icon": "bx bx-face",
             "description": "Gestão de clientes",
             "submenu": [
                 {
                     "id": 71,
                     "nome": "Lista de Clientes",
-                    "link": "/lista_clientes",
+                    "link": "/clientes/lista",
                     "description": "Gerenciar cadastro de clientes"
                 }
             ]
@@ -144,19 +148,20 @@
         {
             "id": 8,
             "nome": "Usuários",
+            "link_name": "/usuarios",
             "icon": "bx bx-user",
             "description": "Gestão de usuários e permissões",
             "submenu": [
                 {
                     "id": 81,
                     "nome": "Usuários",
-                    "link": "/usuarios",
+                    "link": "/usuarios/lista",
                     "description": "Gerenciar cadastro de usuários"
                 },
                 {
                     "id": 82,
                     "nome": "Nível de Usuário",
-                    "link": "/usuario_nivel",
+                    "link": "/usuarios/nivel",
                     "description": "Definir níveis de acesso"
                 }
             ]
@@ -164,13 +169,14 @@
         {
             "id": 9,
             "nome": "Menus",
+            "link_name": "/menus",
             "icon": "bx bx-menu",
             "description": "Personalização de menus",
             "submenu": [
                 {
                     "id": 91,
                     "nome": "Gerenciar Menus",
-                    "link": "/gerenciar_menus",
+                    "link": "/menus/gerenciar",
                     "description": "Configurar navegação do sistema"
                 }
             ]

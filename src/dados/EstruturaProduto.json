@@ -1,18 +1,101 @@
 {
-    "produtos": {
-        "id": 1,
-        "codigos": 
+    "produtos": [
         {
-            "EAN13" : "1234567890123",
-            "CODIGO" : "100800030"
-        },
-        "descricoes": {
+            "id": 1,
+            "codigos": {
+                "EAN13": "1234567890123",
+                "CODIGO": "100800030"
+            },
+            "descricoes": {
+                "nome": "SUPORTE PLACA DE MOTO",
+                "descricao": "SUPORTE PLACA DE MOTO",
+                "apelidos": [
+                    "SUP. PLACA MOTO",
+                    "SUP. MOTO"
+                ],
+                "datas": {
+                    "data_cadastro": "2021-01-01",
+                    "autor_cadastro": 1,
+                    "nome_autor_cadastro": "ADMIN",
+                    "data_alteracao": "2021-01-01",
+                    "autor_alteracao": 1,
+                    "nome_autor_alteracao": "ADMIN",
+                    "data_exclusao": null,
+                    "autor_exclusao": null,
+                    "nome_autor_exclusao": null,
+                    "motivo_exclusao": null,
+                    "excluido": true
+                }
+            },
             "nome": "SUPORTE PLACA DE MOTO",
             "descricao": "SUPORTE PLACA DE MOTO",
-            "apelidos": [
-                "SUP. PLACA MOTO",
-                "SUP. MOTO"
+            "id_unidade": 1,
+            "nome_unidade": "UN",
+            "id_categoria": 1,
+            "nome_categoria": "ACESSÓRIOS",
+            "tags": [
+                "PLACA",
+                "MOTO",
+                "SUPORTE"
             ],
+            "fornecedores": [
+                {
+                    "id_fornecedor": 1,
+                    "nome_fornecedor": "Fornecedor 1",
+                    "ativo": true,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id_fornecedor": 2,
+                    "nome_fornecedor": "Fornecedor 2",
+                    "ativo": true,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                }
+            ],
+            "ativo_em": {
+                "estoque": true,
+                "venda": true,
+                "compra": true,
+                "fabricacao": true
+            },
+            "dimensoes": {
+                "altura": 0.5,
+                "largura": 0.5,
+                "comprimento": 0.5
+            },
+            "pesos": {
+                "peso_bruto": 0.5,
+                "peso_liquido": 0.5
+            },
+            "precos": {
+                "preco_venda": 10.00,
+                "preco_compra": 5.00,
+                "preco_fabricacao": 2.00
+            },
+            "estoque": {
+                "quantidade": 10,
+                "minimo": 5,
+                "maximo": 20
+            },
+            "comentario": "",
             "datas": {
                 "data_cadastro": "2021-01-01",
                 "autor_cadastro": 1,
@@ -24,193 +107,108 @@
                 "autor_exclusao": null,
                 "nome_autor_exclusao": null,
                 "motivo_exclusao": null,
-                "excluido": true
-            }
-        },
-        "nome": "SUPORTE PLACA DE MOTO",
-        "descricao": "SUPORTE PLACA DE MOTO",
-
-        "id_unidade": 1,
-        "nome_unidade": "UN",
-
-        "id_categoria": 1,        
-        "nome_categoria": "ACESSÓRIOS",
-        "tags": [
-            "PLACA",
-            "MOTO",
-            "SUPORTE"
-        ],
-        "fornecedores": [
-            {
-                "id_fornecedor": 1,
-                "nome_fornecedor": "Fornecedor 1",
-                "ativo": true,
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
-                }
+                "excluido": false
             },
-            {
-                "id_fornecedor": 2,
-                "nome_fornecedor": "Fornecedor 2",
-                "ativo": true,
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
+            "anexos": [
+                {
+                    "id": 1,
+                    "id_produto": 1,
+                    "nome": "SUPORTE PLACA DE MOTO",
+                    "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABKklEQVR42mNk...",
+                    "tipo": "imagem",
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 2,
+                    "id_produto": 1,
+                    "nome": "DESENHO TÉCNICO DO SUPORTE PLACA DE MOTO",
+                    "base64": "data:application/pdf;base64,JVBERi0xLjQKJeLjz9MNCjI0IDAgb2JqCjw8L0xpbmVhcml6ZWQg...",
+                    "tipo": "documento",
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
                 }
-            }
-        ],
-        "ativo_em": {
-            "estoque": true,
-            "venda": true,
-            "compra": true,
-            "fabricacao": true
-        },
-        "dimensoes": 
-        {
-            "altura": 0.5,
-            "largura": 0.5,
-            "comprimento": 0.5
-        },
-        "pesos": {
-            "peso_bruto": 0.5,
-            "peso_liquido": 0.5
-        },
-        "precos": {
-            "preco_venda": 10.00,
-            "preco_compra": 5.00,
-            "preco_fabricacao": 2.00
-        },
-        "estoque": {
-            "quantidade": 10,
-            "minimo": 5,
-            "maximo": 20
-        },
-        "comentario": "",
-        "datas": {
-            "data_cadastro": "2021-01-01",
-            "autor_cadastro": 1,
-            "nome_autor_cadastro": "ADMIN",
-            "data_alteracao": "2021-01-01",
-            "autor_alteracao": 1,
-            "nome_autor_alteracao": "ADMIN",
-            "data_exclusao": null,
-            "autor_exclusao": null,
-            "nome_autor_exclusao": null,
-            "motivo_exclusao": null,
-            "excluido": false
-        },
-        "anexos": [
-            {
-                "id": 1,
-                "id_produto": 1,
-                "nome": "SUPORTE PLACA DE MOTO",
-                "base64": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAABKklEQVR42mNk...",
-                "tipo": "imagem",
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
+            ],
+            "operacoes": [
+                {
+                    "id": 1,
+                    "operacao": "CORTE",
+                    "tempo": 120,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 2,
+                    "operacao": "DOBRA",
+                    "tempo": 75,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
+                },
+                {
+                    "id": 3,
+                    "operacao": "PINTURA",
+                    "tempo": 180,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
                 }
-            },
-            {
-                "id": 2,
-                "id_produto": 1,
-                "nome": "DESENHO TÉCNICO DO SUPORTE PLACA DE MOTO",
-                "base64": "data:application/pdf;base64,JVBERi0xLjQKJeLjz9MNCjI0IDAgb2JqCjw8L0xpbmVhcml6ZWQg...",
-                "tipo": "documento",
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
+            ],
+            "composicao": [
+                {
+                    "id": 1,
+                    "composicao": "100% AÇO INOXIDÁVEL",
+                    "quantidade": 0.5,
+                    "datas": {
+                        "data_cadastro": "2021-01-01",
+                        "autor_cadastro": 1,
+                        "nome_autor_cadastro": "ADMIN",
+                        "data_exclusao": null,
+                        "autor_exclusao": null,
+                        "nome_autor_exclusao": null,
+                        "motivo_exclusao": null,
+                        "excluido": false
+                    }
                 }
-            }
-        ],
-        "operacoes": [
-            {
-                "id": 1,
-                "operacao": "CORTE",
-                "tempo": 120,
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
-                }
-            },
-            {
-                "id": 2,
-                "operacao": "DOBRA",
-                "tempo": 75, 
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
-                }
-            },
-            {
-                "id": 3,
-                "operacao": "PINTURA",
-                "tempo": 180,
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
-                }
-            }
-        ],
-        "composicao": [
-            {
-                "id": 1,
-                "composicao": "100% AÇO INOXIDÁVEL",
-                "quantidade": 0.5,
-                "datas": {
-                    "data_cadastro": "2021-01-01",
-                    "autor_cadastro": 1,
-                    "nome_autor_cadastro": "ADMIN",
-                    "data_exclusao": null,
-                    "autor_exclusao": null,
-                    "nome_autor_exclusao": null,
-                    "motivo_exclusao": null,
-                    "excluido": false
-                }
-            }
-        ]
-    }
+            ]
+        }
+    ]
 }

@@ -1,0 +1,94 @@
+{
+    "setores": [
+        {
+            "id": 1,
+            "nome": "AJUSTAGEM",
+            "descricao": "AJUSTAGEM DE BANCADA",
+            "datas" : {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 2,
+            "nome": "ALMOXARIFADO",
+            "descricao": "ALMOXARIFADO PRINCIPAL",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 3,
+            "nome": "ESTOQUE",
+            "descricao": "PEÇAS E MATERIAS DE CONSUMO",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 4,
+            "nome": "INJEÇÃO",
+            "descricao": "PEÇA A SER FABRICADA NAS INJETORAS",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 5,
+            "nome": "USINAGEM",
+            "descricao": "PEÇA A SER FABRICADA NOS CNC's",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_alteracao": null,
+                "autor_alteracao": null,
+                "nome_autor_alteracao": null,
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

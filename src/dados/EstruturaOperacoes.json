@@ -1,0 +1,102 @@
+{
+    "operacoes": [
+        {
+            "id": 1,
+            "nome": "ACABAMENTO",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 2,
+            "nome": "FRESAR",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 3,
+            "nome": "FRESAR 02",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 4,
+            "nome": "FURAR",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 5,
+            "nome": "INJETAR",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 6,
+            "nome": "MONTAGEM",
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        },
+        {
+            "id": 7,
+            "nome": "RETRABALHO - FRESAR",
+            "datas": {
+              "data_cadastro": "2021-01-01",
+              "autor_cadastro": 1,
+              "nome_autor_cadastro": "ADMIN",
+              "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}

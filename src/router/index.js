@@ -52,6 +52,36 @@ const router = createRouter({
           path: '/centro_de_trabalho/maquinas_em_uso',
           name: 'Máquinas em uso',
           component: () => import('@/views/privado/centrotrabalho/MaquinaEmUsoView.vue'),
+        },
+        {
+          path: '/produtos/lista',
+          name: 'Meus produtos',
+          component: () => import('@/views/privado/produtos/ProdutosView.vue'),
+        },
+        {
+          path: '/produtos/unidades',
+          name: 'Unidades',
+          component: () => import('@/views/privado/produtos/UnidadesView.vue'),
+        },
+        {
+          path: '/produtos/grupos',
+          name: 'Grupos',
+          component: () => import('@/views/privado/produtos/GruposView.vue'),
+        },
+        {
+          path: '/produtos/setores',
+          name: 'Setores',
+          component: () => import('@/views/privado/produtos/SetoresView.vue'),
+        },
+        {
+          path: '/produtos/operacoes',
+          name: 'Operações',
+          component: () => import('@/views/privado/produtos/OperacoesView.vue'),
+        },
+        {
+          path: '/clientes/lista',
+          name: 'Meus clientes',
+          component: () => import('@/views/privado/clientes/ClientesView.vue'),
         }
       ],
     },
