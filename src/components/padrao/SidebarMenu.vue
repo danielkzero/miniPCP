@@ -142,7 +142,7 @@ export default {
     color: var(--color-indigo-600);
 }
 
-.router-link-active span {
+.router-link-active .bg-gray-400 {
     background-color: var(--color-indigo-600);
 }
 
