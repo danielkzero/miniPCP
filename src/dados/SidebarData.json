@@ -11,16 +11,8 @@
             "id": 2,
             "nome": "Pedido de Venda",
             "icon": "bx bx-basket",
-            "link_name": "/pedidos",
-            "description": "Gerenciamento de pedidos de venda",
-            "submenu": [
-                {
-                    "id": 21,
-                    "nome": "Lista de Pedidos",
-                    "link": "/pedidos/lista",
-                    "description": "Visualizar e gerenciar todos os pedidos"
-                }
-            ]
+            "link": "/pedidos/lista",
+            "description": "Gerenciamento de pedidos de venda"
         },
         {
             "id": 3,
@@ -58,17 +50,9 @@
         {
             "id": 4,
             "nome": "Centro de Trabalho",
-            "link_name": "/centro_de_trabalho",
+            "link": "/centro_de_trabalho/maquinas_em_uso",
             "icon": "bx bxs-factory",
-            "description": "Gestão dos centros de trabalho",
-            "submenu": [
-                {
-                    "id": 41,
-                    "nome": "Máquinas em Uso",
-                    "link": "/centro_de_trabalho/maquinas_em_uso",
-                    "description": "Visualizar máquinas em operação"
-                }
-            ]
+            "description": "Gestão dos centros de trabalho"
         },
         {
             "id": 5,
@@ -133,17 +117,9 @@
         {
             "id": 7,
             "nome": "Clientes",
-            "link_name": "/clientes",
+            "link": "/clientes/lista",
             "icon": "bx bx-face",
-            "description": "Gestão de clientes",
-            "submenu": [
-                {
-                    "id": 71,
-                    "nome": "Lista de Clientes",
-                    "link": "/clientes/lista",
-                    "description": "Gerenciar cadastro de clientes"
-                }
-            ]
+            "description": "Gestão de clientes"
         },
         {
             "id": 8,
