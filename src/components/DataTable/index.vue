@@ -244,11 +244,10 @@ export default {
                     return "";
                 }
             }
-            console.log(keys);
+
 
             if (Array.isArray(value)) {
                 // Verifica o tipo desejado
-
                 if (col.type === "array") {
 
                     if (col.typeArray == "anexo") {
@@ -268,7 +267,13 @@ export default {
                             return null;
                     } else {
                         const type = col.typeArray.split("=")[1].trim(); // Exemplo: "tipo = cnpj"
-                        console.log(type);
+                        const key = col.keyArray.trim(); // Exemplo: "numero"
+                        const filteredValue = value.find((item) => {
+                            if (item.tipo.toLowerCase() === type.toLowerCase()) {
+                                return item[key];
+                            }
+                        });
+                        return filteredValue ? filteredValue[key] : null;
                     }
                 }
             }

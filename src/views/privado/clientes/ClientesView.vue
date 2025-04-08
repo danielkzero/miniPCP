@@ -17,9 +17,9 @@ export default {
                 { key: "id", label: "ID", type: "text" },
                 { key: "descricoes.nome", label: "Nome", type: "text" },
                 { key: "descricoes.razao_social", label: "Razão", type: "text" },
-                { key: "documentos.cnpj", label: "cnpj", type: "array", typeArray: "tipo = cnpj", keyArray: "numero" },
-                { key: "enderecos.endereco", label: "Endereço", type: "array", typeArray: "tipo = principal", keyArray: "cidade" },
-                { key: "enderecos.endereco", label: "Endereço", type: "array", typeArray: "tipo = principal", keyArray: "estado" },
+                { key: "documentos", label: "cnpj", type: "array", typeArray: "tipo = cnpj", keyArray: "numero" },
+                { key: "enderecos", label: "Cidade", type: "array", typeArray: "tipo = principal", keyArray: "cidade" },
+                { key: "enderecos", label: "Estado", type: "array", typeArray: "tipo = principal", keyArray: "estado" },
                 { key: "datas.data_cadastro", label: "Cadastro", type: "date" }
             ]
         };
