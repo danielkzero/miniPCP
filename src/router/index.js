@@ -87,6 +87,21 @@ const router = createRouter({
           path: '/estoques/lista',
           name: 'Meus estoques',
           component: () => import('@/views/privado/estoques/EstoquesView.vue'),
+        },
+        {
+          path: '/estoques/historico',
+          name: 'Histórico de estoques',
+          component: () => import('@/views/privado/estoques/EstoquesHistoricoView.vue'),
+        },
+        {
+          path: '/usuarios/lista',
+          name: 'Usuários do sistema',
+          component: () => import('@/views/privado/usuarios/UsuariosView.vue'),
+        },
+        {
+          path: '/usuarios/nivel',
+          name: 'Nível de acesso',
+          component: () => import('@/views/privado/usuarios/UsuariosNivelView.vue'),
         }
       ],
     },
