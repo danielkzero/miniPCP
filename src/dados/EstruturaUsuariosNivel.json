@@ -1,0 +1,237 @@
+{
+    "usuarios_nivel": [
+        {
+            "id": 1,
+            "nome": "administrador",
+            "descricao": "Administrador do sistema",
+            "liberado": [
+                {
+                    "id": "1",
+                    "pagina": "pedido_de_venda",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "2",
+                            "pagina": "pedidos",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "3",
+                    "pagina": "producao",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "4",
+                            "pagina": "ordem_producao",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "5",
+                            "pagina": "registro_entrega",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "6",
+                            "pagina": "cadastro_equipamento",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "7",
+                            "pagina": "cadastro_observacao",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "8",
+                    "pagina": "centro_trabalho",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "9",
+                            "pagina": "equipamentos_em_uso",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "10",
+                    "pagina": "produtos",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "11",
+                            "pagina": "lista_produtos",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "12",
+                            "pagina": "unidades",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "13",
+                            "pagina": "grupos",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "14",
+                            "pagina": "setores",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "15",
+                            "pagina": "operacoes",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "16",
+                    "pagina": "estoque",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "17",
+                            "pagina": "meu_estoque",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "18",
+                            "pagina": "historico_estoque",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "19",
+                    "pagina": "painel_clientes",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "20",
+                            "pagina": "lista_clientes",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "21",
+                    "pagina": "painel_usuario",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "22",
+                            "pagina": "usuarios",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        },
+                        {
+                            "id": "23",
+                            "pagina": "usuario_nivel",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                },
+                {
+                    "id": "25",
+                    "pagina": "menus",
+                    "visualizar": true,
+                    "criar": false,
+                    "editar": false,
+                    "excluir": false,
+                    "submenus": [
+                        {
+                            "id": "26",
+                            "pagina": "gerenciar_menus",
+                            "visualizar": true,
+                            "criar": true,
+                            "editar": true,
+                            "excluir": true
+                        }
+                    ]
+                }
+            ],
+            "datas": {
+                "data_cadastro": "2021-01-01",
+                "autor_cadastro": 1,
+                "nome_autor_cadastro": "ADMIN",
+                "data_exclusao": null,
+                "autor_exclusao": null,
+                "nome_autor_exclusao": null,
+                "motivo_exclusao": null,
+                "excluido": false
+            }
+        }
+    ]
+}
