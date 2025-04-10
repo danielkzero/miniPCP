@@ -1,8 +1,8 @@
 <template>
     <aside id="logo-sidebar"
-        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        class="fixed top-0 left-0 z-40 w-64 h-screen pt-20 transition-transform -translate-x-full bg-white border-r border-gray-200 sm:translate-x-0"
         aria-label="Sidebar">
-        <div class="h-full px-3 pb-4 overflow-y-auto bg-white dark:bg-gray-800">
+        <div class="h-full px-3 pb-4 overflow-y-auto bg-white">
             <ul class="space-y-2 font-medium">
                 <!-- Renderização dos itens do menu principal -->
                 <li v-for="item in SidebarData.menu" :key="item.id">
@@ -11,7 +11,7 @@
                         <template v-if="item?.link">
                             <router-link :to="item.link"
                                 :class="{ 'active hover:bg-indigo-50 hover:text-indigo-600': $route.path.startsWith(item.link_name) }"
-                                class="flex items-center w-full p-2 text-gray-500 transition duration-75 rounded-lg group hover:bg-indigo-50 hover:text-indigo-600 dark:text-gray-700 dark:hover:bg-indigo-700">
+                                class="flex items-center w-full p-2 text-gray-500 transition duration-75 rounded-lg group hover:bg-indigo-50 hover:text-indigo-600">
 
                                 <i :class="item.icon" class="bx text-xl flex-shrink-0"></i>
                                 <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">
@@ -25,7 +25,7 @@
                                 class="flex items-center w-full p-2 cursor-pointer rounded-lg group text-gray-600 hover:bg-indigo-50 hover:text-indigo-600">
                                 <i :class="item.icon" class="bx text-xl flex-shrink-0"></i>
                                 <span class="flex-1 ms-3 text-left rtl:text-right whitespace-nowrap">{{ item.nome
-                                }}</span>
+                                    }}</span>
                                 <i v-if="item?.submenu" :class="['bx text-xl transition-transform duration-200',
                                     openMenus.includes(item.id) ? 'bx-chevron-down' : 'bx-chevron-right']"></i>
                             </button>
@@ -61,7 +61,7 @@
                                                 class="py-2 space-y-2 overflow-hidden">
                                                 <li v-for="nestedItem in subItem.submenu" :key="nestedItem.id">
                                                     <router-link :to="nestedItem.link"
-                                                        class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-50 hover:text-indigo-600 dark:text-gray-700 dark:hover:bg-indigo-700">
+                                                        class="flex items-center w-full p-2 text-gray-700 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-50 hover:text-indigo-600">
                                                         <span :class="[
                                                             '-m-4 w-2 h-2 rounded-full mr-3 group-hover:bg-indigo-600',
                                                             nestedItem.active ? 'bg-indigo-500' : 'bg-gray-400'
@@ -73,7 +73,7 @@
                                         </transition>
                                     </div>
                                     <router-link v-else :to="subItem.link"
-                                        class="flex items-center w-full p-2 text-gray-500 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-50 hover:text-indigo-600 dark:text-gray-700 dark:hover:bg-indigo-700">
+                                        class="flex items-center w-full p-2 text-gray-500 transition duration-75 rounded-lg pl-11 group hover:bg-indigo-50 hover:text-indigo-600">
                                         <span :class="['-m-4 w-2 h-2 rounded-full mr-3 group-hover:bg-indigo-600',
                                             subItem.active ? 'bg-indigo-500' : 'bg-gray-400']"></span>
                                         {{ subItem.nome }}
