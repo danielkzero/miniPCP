@@ -40,9 +40,10 @@
                 <tbody class="divide-y divide-gray-200">
                     <template v-for="item in paginatedData" :key="item.id">
                         <tr class="odd:bg-white even:bg-gray-50">
-                            <td class="px-6 py-2 whitespace-nowrap w-1 h-1" v-if="filhos"
-                                @click="toggleChildren(item.id)">
-                                <i class='bx bx-plus text-xl text-indigo-600 hover:text-indigo-700 cursor-pointer'></i>
+                            <td class="px-6 py-2 whitespace-nowrap w-1 h-1" v-if="filhos">
+                                <i class='bx bx-plus text-xl cursor-pointer'
+                                    :class="(item[subcolumn_name] ? 'text-indigo-600 hover:text-indigo-700' : 'text-gray-300')"
+                                    @click="(item[subcolumn_name] ? toggleChildren(item.id) : false)"></i>
                             </td>
                             <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap">
                                 <template v-if="vetifyType(item, col)?.isHtml">
