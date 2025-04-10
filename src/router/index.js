@@ -7,7 +7,13 @@ const router = createRouter({
       path: '/',
       name: 'Home',
       component: () => import('@/views/publico/PrincipalView.vue'),
+      redirect: '/principal',
       children: [
+        {
+          path: '/principal',
+          name: 'Principal',
+          component: () => import('@/views/privado/principal/PrincipalView.vue'),
+        },
         {
           path: '/producao/maquinas',
           name: 'Máquinas',
@@ -102,6 +108,11 @@ const router = createRouter({
           path: '/usuarios/nivel',
           name: 'Nível de acesso',
           component: () => import('@/views/privado/usuarios/UsuariosNivelView.vue'),
+        },
+        {
+          path: '/menus/gerenciar',
+          name: 'Menus do sistema',
+          component: () => import('@/views/privado/menus/MenusView.vue'),
         }
       ],
     },
