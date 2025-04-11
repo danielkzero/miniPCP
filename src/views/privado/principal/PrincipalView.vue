@@ -1,74 +1,134 @@
 <template>
     <div class="p-6 pt-0 space-y-6">
-        <section class="bg-white p-6 rounded-xl shadow">
-            <div class="flex justify-between">
-                <div class="flex flex-col justify-center">
-                    <h1 class="text-2xl font-bold text-indigo-500">Olá {{ usuario }}!</h1>
-                    <p class="text-gray-600">Bem-vindo ao sistema de gestão de produção.</p>
-                    <p class="text-gray-600">Aqui você pode acompanhar o desempenho da produção e as ordens de serviço.
-                    </p>
-                    <span>
-                        <button @click="goToPedido()"
-                            class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 transition duration-200 mt-6">
-                            Criar novo pedido
-                        </button>
-                    </span>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl shadow p-4" v-for="(item, index) in infoCard" :key="index">
+                <div :class="`w-10 h-10 ${item.color} rounded-full flex items-center justify-center text-white mb-2`">
+                    <i :class="`text-2xl ${item.icon}`"></i>
                 </div>
-                <div>
-                    <img src="@/assets/11_Success-1.jpg" alt="Logo" class="h-32 w-32" />
-
-                </div>
-            </div>
-        </section>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <!-- PEDIDOS DO DIA -->
-            <div class="bg-white p-4 rounded-xl shadow">
-                <h3 class="text-lg font-semibold">Pedidos do Dia</h3>
-                <p class="text-3xl font-bold text-green-600">{{ pedidosHoje }}</p>
-            </div>
-
-            <!-- MÁQUINAS EM USO -->
-            <div class="bg-white p-4 rounded-xl shadow">
-                <h3 class="text-lg font-semibold">Máquinas em Uso</h3>
-                <p class="text-3xl font-bold text-blue-500">{{ maquinasEmUso }}</p>
-            </div>
-
-            <!-- ORDENS DE SERVIÇO ATIVAS -->
-            <div class="bg-white p-4 rounded-xl shadow">
-                <h3 class="text-lg font-semibold">Ordens de Serviço Ativas</h3>
-                <p class="text-3xl font-bold text-yellow-500">{{ ordensServicoAtivas }}</p>
+                <div class="text-sm text-gray-500">{{ item.title }}</div>
+                <div :class="`text-3xl font-bold ${item.colorValue}`">{{ item.value }}</div>
             </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            <!-- GRÁFICO 15 ÚLTIMOS DIAS -->
-            <section class="bg-white p-4 rounded-xl shadow">
-                <h2 class="text-lg font-semibold mb-2">Pedidos - Últimos 15 Dias</h2>
-                <apexchart type="bar" height="300" :options="grafico15Dias.options" :series="grafico15Dias.series" />
-            </section>
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4">
+            <!-- Weekly Overview -->
+            <div class=" bg-white rounded-2xl shadow p-4">
+                <div class="font-semibold text-gray-800 mb-2">Últimos 15 dias</div>
 
-            <!-- GRÁFICO DO MÊS -->
-            <section class="bg-white p-4 rounded-xl shadow">
-                <h2 class="text-lg font-semibold mb-2">Pedidos - Mês Corrente</h2>
-                <apexchart type="line" height="300" :options="graficoMes.options" :series="graficoMes.series" />
-            </section>
+                <apexchart width="100%" height="170" type="bar" :options="grafico15Dias.options"
+                    :series="grafico15Dias.series" />
+                <p class="text-sm text-gray-500 mt-6">Foram {{(graficoMes.series[0].data.reduce((acc, val) => acc +
+                    val,
+                    0) / 3).toFixed(0)}} 😎 pedidos nos últimos dias.</p>
+                <button class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-xl font-semibold">
+                    Criar novo pedido?
+                </button>
+            </div>
+
+            <!-- Total Earning -->
+            <div class=" bg-white rounded-2xl shadow p-4">
+                <div class="font-semibold text-gray-800 mb-4">Produção atual</div>
+                <div class="text-2xl font-bold">1.518 <span class="text-gray-500 text-sm">peças</span></div>
+                <p class="text-sm text-gray-500 mb-6">Ativos produzidos até o momento</p>
+
+                <div class="space-y-4 pt-4">
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span>Peugeot SA</span>
+                        </div>
+                        <span>818 de 1000</span>
+                    </div>
+                    <div class="h-1 bg-indigo-200 rounded-full">
+                        <div class="w-4/5 h-full bg-indigo-500 rounded-full"></div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span>Renault SA</span>
+                        </div>
+                        <span>550 de 700</span>
+                    </div>
+                    <div class="h-1 bg-blue-200 rounded-full">
+                        <div class="w-2/3 h-full bg-blue-500 rounded-full"></div>
+                    </div>
+
+                    <div class="flex justify-between items-center">
+                        <div class="flex items-center gap-2">
+                            <span>Volkswagen AG</span>
+                        </div>
+                        <span>150 de 700</span>
+                    </div>
+                    <div class="h-1 bg-gray-200 rounded-full">
+                        <div class="w-1/4 h-full bg-gray-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
+                <!-- Total Profit Line Chart -->
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <div class="text-xl font-semibold">{{profitChart.series[0].data.reduce((acc, val) => acc + val, 0)}}
+                    </div>
+                    <div class="text-sm text-gray-500 mb-2">Total de pedidos</div>
+                    <apexchart width="100%" height="80" type="line" :options="profitChart.options"
+                        :series="profitChart.series" />
+                </div>
+
+                <!-- Total Profit Card -->
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center mb-2">
+                        <i class="bx bx-pie-chart text-gray-700 text-2xl"></i>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div>
+                            <div class="text-sm font-semibold">Média atual</div>
+                            <div class="text-sm text-indigo-500">Diário</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xl font-bold">100 <span class="text-indigo-500 text-sm">peças</span></div>
+                </div>
+
+                <!-- New Project -->
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <div class="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center text-white mb-2">
+                        <i class="bx bxs-time text-2xl"></i>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div>
+                            <div class="text-sm font-semibold">Produzindo</div>
+                            <div class="text-sm text-gray-500">Mensalmente</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-xl font-bold">2.560 <span class="text-gray-500 text-sm">peças</span></div>
+                </div>
+
+                <!-- Sessions Chart -->
+                <div class="bg-white rounded-2xl shadow p-4">
+                    <div class="text-xl font-bold">286</div>
+                    <div class="text-sm text-gray-500 mb-2">Ordens de serviço</div>
+                    <apexchart width="100%" height="80" type="bar" :options="sessionChart.options"
+                        :series="sessionChart.series" />
+                </div>
+            </div>
+
         </div>
+
 
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-6">
             <!-- HISTÓRICO DE FABRICAÇÃO -->
-            <section class="bg-white p-4 rounded-xl shadow">
+            <di class="bg-white p-4 rounded-xl shadow">
                 <h2 class="text-lg font-semibold mb-2">Histórico de Fabricação</h2>
                 <DataTable :data="historicoFabricacao" :columns="columnenthistoricoFabricacao" :classTable="'text-xs'"
                     :pesquisar="false" :actions="false" />
-            </section>
+            </di>
 
             <!-- ÚLTIMOS 10 REGISTROS DE ENTREGA -->
-            <section class="bg-white p-4 rounded-xl shadow">
+            <div class="bg-white p-4 rounded-xl shadow">
                 <h2 class="text-lg font-semibold mb-2">Últimos 10 Registros de Entrega</h2>
                 <DataTable :data="entregasRecentes" :columns="columnentregasrecentes" :classTable="'text-xs'"
                     :pesquisar="false" :actions="false" />
-            </section>
+            </div>
         </div>
     </div>
 </template>
@@ -86,18 +146,71 @@ export default {
     data() {
         return {
             usuario: 'Administrador', // Nome do usuário logado
+            infoCard: [
+                {
+                    color: "bg-green-600",
+                    icon: "bx bx-basket",
+                    title: "Pedidos de hoje",
+                    value: 6,
+                    colorValue: "text-green-600"
+                },
+                {
+                    color: "bg-blue-600",
+                    icon: "bx bxs-factory",
+                    title: "Máquinas em Uso",
+                    value: 3,
+                    colorValue: "text-blue-600"
+                },
+                {
+                    color: "bg-orange-600",
+                    icon: "bx bx-file",
+                    title: "Ordens de serviços ativa",
+                    value: 3,
+                    colorValue: "text-orange-600"
+                },
+                {
+                    color: "bg-indigo-600",
+                    icon: "bx bx-user",
+                    title: "Clientes ativos",
+                    value: 2,
+                    colorValue: "text-indigo-600"
+                }
+            ],
             grafico15Dias: {
                 options: {
-                    chart: { id: 'grafico15Dias', toolbar: { show: false } },
+                    chart: {
+                        id: 'grafico15Dias',
+                        toolbar: { show: false },
+                        zoom: { enabled: false },
+                    },
                     colors: ['var(--color-indigo-500)'],
                     plotOptions: {
                         bar: {
-                            borderRadius: 20
+                            borderRadius: 5,
+                            columnWidth: 10,
                         }
                     },
+                    yaxis: {
+                        labels: { show: false },
+                        axisTicks: { show: false },
+                        axisBorder: { show: false }
+                    },
+                    dataLabels: { enabled: false },
                     xaxis: {
+                        labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false },
                         categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
-                    }
+                    },
+                    grid: {
+                        show: true,
+                        borderColor: '#ddd',
+                        strokeDashArray: 4,
+                        xaxis: {
+                            lines: { show: false }
+                        },
+                        yaxis: {
+                            lines: { show: true }
+                        }
+                    },
                 },
                 series: [{
                     name: 'Pedidos',
@@ -106,7 +219,11 @@ export default {
             },
             graficoMes: {
                 options: {
-                    chart: { id: 'graficoMes', toolbar: { show: false } },
+                    chart: {
+                        id: 'graficoMes',
+                        toolbar: { show: false },
+                        zoom: { enabled: false },
+                    },
                     colors: ['var(--color-indigo-500)'],
                     plotOptions: {
                         bar: {
@@ -114,25 +231,45 @@ export default {
                         }
                     },
                     xaxis: {
-                        categories: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '08/04', '09/04', '10/04']
+                        categories: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '08/04', '09/04', '10/04'],
+                        labels: { show: false },
+                        axisTicks: { show: false },
+                        axisBorder: { show: false }
                     },
+                    yaxis: {
+                        labels: { show: false },
+                        axisTicks: { show: false },
+                        axisBorder: { show: false }
+                    },
+                    grid: {
+                        show: true,
+                        borderColor: '#ddd',
+                        strokeDashArray: 4,
+                        xaxis: {
+                            lines: { show: true }
+                        },
+                        yaxis: {
+                            lines: { show: false }
+                        }
+                    },
+                    dataLabels: { enabled: false },
+                    legend: { show: false },
                     markers: {
-                        size: [8, 8], // 0 para barras, 8 para "bola"
-                        colors: ['var(--color-indigo-500)'], // verde
+                        size: [8, 8],
+                        colors: ['var(--color-indigo-500)'],
                         strokeColors: '#ffffff',
                         strokeWidth: 2
                     },
                     stroke: {
                         width: [4, 8]
-                    }
+                    },
                 },
                 series: [{
                     name: 'Pedidos',
-                    data: [
-                        0, 15, 5, 25, 12, 29, 18, 32, 29, 38
-                    ]
+                    data: [0, 15, 5, 25, 12, 29, 18, 32, 29, 38]
                 }]
             },
+
             pedidosHoje: 12,
             maquinasEmUso: 4,
             ordensServicoAtivas: 7,
@@ -170,7 +307,67 @@ export default {
                 { key: 'numero_serie', label: 'Número de série', onClick: this.abrirRegistroEntrega },
                 { key: 'data', label: 'Data de entrega' },
                 { key: 'cliente', label: 'Cliente' }
-            ]
+            ],
+
+            weeklyChart: {
+                options: {
+                    chart: {
+                        toolbar: { show: false },
+                        zoom: { enabled: false },
+                    },
+                    grid: {
+                        borderColor: '#eee',
+                        strokeDashArray: 4,
+                    },
+                    xaxis: { labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false } },
+                    yaxis: { labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false } },
+                    dataLabels: { enabled: false },
+                    plotOptions: {
+                        bar: {
+                            borderRadius: 8,
+                            columnWidth: '45%',
+                        },
+                    },
+                    colors: ['#a78bfa'],
+                },
+                series: [
+                    {
+                        data: [30, 40, 45, 70, 40, 30, 60]
+                    }
+                ]
+            },
+            profitChart: {
+                options: {
+                    chart: { toolbar: { show: false }, zoom: { enabled: false }, sparkline: { enabled: true } },
+                    stroke: { curve: 'smooth', width: 2 },
+                    grid: { show: false },
+                    xaxis: { labels: { show: false } },
+                    yaxis: { labels: { show: false } },
+                    dataLabels: { enabled: false },
+                    colors: ['var(--color-indigo-400)']
+                },
+                series: [{
+                    name: 'Pedidos',
+                    data: [0, 15, 5, 25, 12, 29, 18, 32, 29, 38]
+                }]
+            },
+            sessionChart: {
+                options: {
+                    chart: { toolbar: { show: false }, zoom: { enabled: false }, sparkline: { enabled: true } },
+                    plotOptions: { bar: { columnWidth: 10, borderRadius: 5 } },
+                    grid: { show: false },
+                    xaxis: { labels: { show: false } },
+                    yaxis: { labels: { show: false } },
+                    dataLabels: { enabled: false },
+                    colors: ['var(--color-indigo-400)', 'var(--color-indigo-600)']
+                },
+                series: [
+                    {
+                        name: 'Ordens de serviço',
+                        data: [10, 20, 15, 25, 20, 15, 18]
+                    }
+                ]
+            },
         }
     },
     methods: {

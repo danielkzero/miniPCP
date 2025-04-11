@@ -17,17 +17,17 @@ const router = createRouter({
         {
           path: '/producao/maquinas',
           name: 'Máquinas',
-          component: () => import('@/views/privado/maquinas/MaquinasView.vue'),
+          component: () => import('@/views/privado/producao/maquinas/MaquinasView.vue'),
         },
         {
           path: '/maquinas/novo', 
           name: 'Nova Máquina',
-          component: () => import('@/views/privado/maquinas/MaquinaCreate.vue'),
+          component: () => import('@/views/privado/producao/maquinas/MaquinaCreate.vue'),
         },
         {
           path: '/maquinas/editar/:id',
           name: 'Editar Máquina',
-          component: () => import('@/views/privado/maquinas/MaquinaEdit.vue'),
+          component: () => import('@/views/privado/producao/maquinas/MaquinaEdit.vue'),
         },
         {
           path: '/pedidos/lista',
@@ -116,6 +116,16 @@ const router = createRouter({
         }
       ],
     },
+    {
+      path: '/login',
+      name: 'Login do sistema',
+      component: () => import('@/views/publico/LoginView.vue')
+    },
+    {
+      path: '/operador',
+      name: 'Registro de operações',
+      component: () => import('@/views/publico/Operador/PrincipalOperadorView.vue')
+    }
   ],
 })
 

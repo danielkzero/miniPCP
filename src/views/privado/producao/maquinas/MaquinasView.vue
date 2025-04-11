@@ -1,7 +1,7 @@
 <template>
     <div>
         <DataTable :data="maquinas" :columns="columns" classTable="text-xs" @deleteItem="handleDeleteItem"
-            @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
+            :pesquisar="true" @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
     </div>
 </template>
 <script>

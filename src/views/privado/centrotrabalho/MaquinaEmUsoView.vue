@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-4 gap-4 mx-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-4">
         <div class="shadow-md rounded-lg p-4 "
             :class="maquina.status == 'ATIVO' ? 'bg-white animate__animated animate__bounce' : 'bg-gray-50 text-gray-500'"
             v-for="(maquina, index) in data" :key="index">
