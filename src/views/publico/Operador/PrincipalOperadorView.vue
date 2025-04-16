@@ -25,7 +25,7 @@
                     <p>{{ item.numero_os }}</p>
                 </div>
                 <div class="md:col-span-3">
-                    <p class="text-gray-500 text-xs">100800206</p>
+                    <p class="text-gray-500 text-xs">{{ item.codigo }}</p>
                     <p>{{ item.produto }}</p>
                 </div>
                 <div class="md:mb-0 mb-3">
@@ -37,7 +37,9 @@
                     <p>{{ item.datas.data_cadastro }}</p>
                 </div>
                 <div>
-                    <button class="bg-indigo-500 text-white px-4 py-2 rounded-xl w-full h-full">
+                    <button class="bg-indigo-500 text-white px-4 py-2 rounded-xl w-full h-full"
+                        @click="registroOperacao(item)">
+                        <i class="bx bx-check"></i>
                         Fechar OS
                     </button>
                 </div>
@@ -54,6 +56,7 @@ export default {
                 {
                     id: 7,
                     id_maquina: 2,
+                    codigo: "100800206",
                     numero_os: "OS-001454",
                     id_observacao: 1,
                     observacao: "INICIO DE LOTE",
@@ -70,6 +73,7 @@ export default {
                 {
                     id: 7,
                     id_maquina: 2,
+                    codigo: "100800208",
                     numero_os: "OS-001457",
                     id_observacao: 1,
                     observacao: "INICIO DE LOTE",
@@ -82,10 +86,32 @@ export default {
                         codigo: "900100005",
                         nome_autor_cadastro: "JHONNY"
                     }
+                },
+                {
+                    id: 8,
+                    id_maquina: 3,
+                    codigo: "100800211",
+                    numero_os: "OS-001464",
+                    id_observacao: 1,
+                    observacao: "INICIO DE LOTE",
+                    produto: "04098 - REV 00.01 - P143",
+                    quantidade: 0,
+                    parada_almoco: false,
+                    datas: {
+                        data_cadastro: "2021-01-01 15:00:00",
+                        autor_cadastro: 2,
+                        codigo: "900100005",
+                        nome_autor_cadastro: "REGINALDO"
+                    }
                 }
             ],
         }
-    }
+    },
+    methods: {
+        registroOperacao(item) {
+            this.$router.push(`/operador/registros/${item.numero_os}`);
+        }
+    },
 }
 </script>
 
