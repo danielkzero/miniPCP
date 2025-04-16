@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import authGuard from './authGuard' 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -123,10 +124,15 @@ const router = createRouter({
     },
     {
       path: '/operador',
-      name: 'Registro de operações',
       component: () => import('@/views/publico/Operador/PrincipalOperadorView.vue')
+    },
+    {
+      path: '/operador/registros/:id',
+      component: () => import('@/views/publico/Operador/RegistroOperadorView.vue')
     }
   ],
 })
+// Middleware para verificar token
+router.beforeEach(authGuard)
 
 export default router
