@@ -198,7 +198,7 @@ export function historicaFabricacao(app, db) {
 }
 
 export function ultimos10registroentrega(app, db) {
-    app.get('/api/dashboard/ultimos10registroentrega', async (req, res) => {
+    app.get('/api/dashboard/entregasRecentes', async (req, res) => {
         try {
             const [rows] = await db.execute(`
                 SELECT 
@@ -206,16 +206,17 @@ export function ultimos10registroentrega(app, db) {
                     fncCodigo(a.id_ordem_entrega, '8001') numero_serie, 
                     a.data_cadastro data, 
                     (SELECT b.nome FROM aion_clientes b WHERE b.id=a.id_cliente) AS cliente 
-                FROM aion_ordem_entrega_itens a GROUP BY a.id_ordem_entrega ORDER BY a.id DESC LIMIT 10
+                FROM aion_ordem_entrega_itens a GROUP BY a.id_ordem_entrega ORDER BY a.id_ordem_entrega DESC LIMIT 10
             `);
             res.json(
                 {
-                    ultimos10registroentrega: 
+                    entregasRecentes: 
                         rows.map(row => (
                             {
-                            numero_de_serie: row.numero_de_serie,
+                            id: row.id,
+                            numero_serie: row.numero_serie,
                             cliente: row.cliente,
-                            data_de_entrega: moment(row.data_de_entrega).locale('pt-br').format('DD/MM/YYYY'),
+                            data: moment(row.data).locale('pt-br').format('DD/MM/YYYY'),
                             }
                     ))
                 }

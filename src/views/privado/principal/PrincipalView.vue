@@ -163,18 +163,7 @@ export default {
                 { key: 'descricao', label: 'Descrição' },
                 { key: 'progresso', label: 'Progresso', type: 'progressbar' }
             ],
-            entregasRecentes: [
-                { id: 1, data: '09/04/2025', cliente: 'Empresa XPTO', numero_serie: 800100450 },
-                { id: 2, data: '08/04/2025', cliente: 'Peugeot SA', numero_serie: 800100449 },
-                { id: 3, data: '07/04/2025', cliente: 'Renault SA', numero_serie: 800100448 },
-                { id: 4, data: '06/04/2025', cliente: 'Fiat Chrysler', numero_serie: 800100447 },
-                { id: 5, data: '05/04/2025', cliente: 'Volkswagen AG', numero_serie: 800100446 },
-                { id: 6, data: '04/04/2025', cliente: 'Ford Motor Company', numero_serie: 800100445 },
-                { id: 7, data: '03/04/2025', cliente: 'General Motors', numero_serie: 800100444 },
-                { id: 8, data: '02/04/2025', cliente: 'Honda Motor Co.', numero_serie: 800100443 },
-                { id: 9, data: '01/04/2025', cliente: 'Toyota Motor Corporation', numero_serie: 800100442 },
-                { id: 10, data: '31/03/2025', cliente: 'Nissan Motor Co.', numero_serie: 800100441 }
-            ],
+            entregasRecentes: [],
             columnentregasrecentes: [
                 { key: 'numero_serie', label: 'Número de série', onClick: this.abrirRegistroEntrega },
                 { key: 'data', label: 'Data de entrega' },
@@ -251,11 +240,21 @@ export default {
                 console.error('Erro ao buscar histórico de fabricação:', error)
             }
         },
+        async buscarRegistroRecentes() {
+            try {
+                const response = await axios.get('/api/dashboard/entregasRecentes')
+                this.entregasRecentes = response.data.entregasRecentes
+                console.log('Entregas recentes:', this.entregasRecentes)
+            } catch (error) {
+                console.error('Erro ao buscar entregas recentes:', error)
+            }
+        }
     },
     async mounted() {
         this.buscarInfoCard();
         this.buscarGrafico15Dias();
         this.buscarHistoricoFabricacao();
+        this.buscarRegistroRecentes();
     }
 }
 </script>
