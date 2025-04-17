@@ -18,10 +18,11 @@
 
                 <apexchart width="100%" height="170" type="bar" :options="grafico15Dias.options"
                     :series="grafico15Dias.series" />
-                <p class="text-sm text-gray-500 mt-6">Foram {{(graficoMes.series[0].data.reduce((acc, val) => acc +
-                    val,
-                    0) / 3).toFixed(0)}} 😎 pedidos nos últimos dias.</p>
-                <button class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-xl font-semibold">
+                <p class="text-sm text-gray-500 mt-6" v-if="totalPedidos15Dias">
+                    Foram {{ totalPedidos15Dias }} 😎 pedidos nos
+                    últimos dias.</p>
+                <button @click="$router.push('/pedidos/lista')"
+                    class="mt-4 w-full bg-indigo-600 text-white py-2 rounded-xl font-semibold cursor-pointer hover:bg-indigo-700">
                     Criar novo pedido?
                 </button>
             </div>
@@ -68,7 +69,8 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4">
                 <!-- Total Profit Line Chart -->
                 <div class="bg-white rounded-2xl shadow p-4">
-                    <div class="text-xl font-semibold">{{profitChart.series[0].data.reduce((acc, val) => acc + val, 0)}}
+                    <div class="text-xl font-semibold">
+                        {{profitChart.series[0].data.reduce((acc, val) => acc + val, 0)}}
                     </div>
                     <div class="text-sm text-gray-500 mb-2">Total de pedidos</div>
                     <apexchart width="100%" height="80" type="line" :options="profitChart.options"
@@ -136,6 +138,7 @@
 <script>
 import ApexChart from 'vue3-apexcharts'
 import DataTable from '@/components/DataTable/index.vue'; // Table component
+import axios from 'axios'; // Axios for API requests
 
 export default {
     components: {
@@ -146,145 +149,14 @@ export default {
     data() {
         return {
             usuario: 'Administrador', // Nome do usuário logado
-            infoCard: [
-                {
-                    color: "bg-green-600",
-                    icon: "bx bx-basket",
-                    title: "Pedidos de hoje",
-                    value: 6,
-                    colorValue: "text-green-600"
-                },
-                {
-                    color: "bg-blue-600",
-                    icon: "bx bxs-factory",
-                    title: "Máquinas em Uso",
-                    value: 3,
-                    colorValue: "text-blue-600"
-                },
-                {
-                    color: "bg-orange-600",
-                    icon: "bx bx-file",
-                    title: "Ordens de serviços ativa",
-                    value: 3,
-                    colorValue: "text-orange-600"
-                },
-                {
-                    color: "bg-indigo-600",
-                    icon: "bx bx-user",
-                    title: "Clientes ativos",
-                    value: 2,
-                    colorValue: "text-indigo-600"
-                }
-            ],
-            grafico15Dias: {
-                options: {
-                    chart: {
-                        id: 'grafico15Dias',
-                        toolbar: { show: false },
-                        zoom: { enabled: false },
-                    },
-                    colors: ['var(--color-indigo-500)'],
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 5,
-                            columnWidth: 10,
-                        }
-                    },
-                    yaxis: {
-                        labels: { show: false },
-                        axisTicks: { show: false },
-                        axisBorder: { show: false }
-                    },
-                    dataLabels: { enabled: false },
-                    xaxis: {
-                        labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false },
-                        categories: ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom']
-                    },
-                    grid: {
-                        show: true,
-                        borderColor: '#ddd',
-                        strokeDashArray: 4,
-                        xaxis: {
-                            lines: { show: false }
-                        },
-                        yaxis: {
-                            lines: { show: true }
-                        }
-                    },
-                },
-                series: [{
-                    name: 'Pedidos',
-                    data: [10, 15, 12, 18, 14, 9, 11]
-                }]
-            },
-            graficoMes: {
-                options: {
-                    chart: {
-                        id: 'graficoMes',
-                        toolbar: { show: false },
-                        zoom: { enabled: false },
-                    },
-                    colors: ['var(--color-indigo-500)'],
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 20
-                        }
-                    },
-                    xaxis: {
-                        categories: ['01/04', '02/04', '03/04', '04/04', '05/04', '06/04', '07/04', '08/04', '09/04', '10/04'],
-                        labels: { show: false },
-                        axisTicks: { show: false },
-                        axisBorder: { show: false }
-                    },
-                    yaxis: {
-                        labels: { show: false },
-                        axisTicks: { show: false },
-                        axisBorder: { show: false }
-                    },
-                    grid: {
-                        show: true,
-                        borderColor: '#ddd',
-                        strokeDashArray: 4,
-                        xaxis: {
-                            lines: { show: true }
-                        },
-                        yaxis: {
-                            lines: { show: false }
-                        }
-                    },
-                    dataLabels: { enabled: false },
-                    legend: { show: false },
-                    markers: {
-                        size: [8, 8],
-                        colors: ['var(--color-indigo-500)'],
-                        strokeColors: '#ffffff',
-                        strokeWidth: 2
-                    },
-                    stroke: {
-                        width: [4, 8]
-                    },
-                },
-                series: [{
-                    name: 'Pedidos',
-                    data: [0, 15, 5, 25, 12, 29, 18, 32, 29, 38]
-                }]
-            },
+            infoCard: [],
+            grafico15Dias: {},
+            totalPedidos15Dias: null,
 
             pedidosHoje: 12,
             maquinasEmUso: 4,
             ordensServicoAtivas: 7,
-            historicoFabricacao: [
-                { id: 1, data: '09/04/2025', ordem_de_servico: 'OS-000018', descricao: 'Fabricação de Produto A', progresso: 50 },
-                { id: 2, data: '08/04/2025', ordem_de_servico: 'OS-000023', descricao: 'Fabricação de Produto B', progresso: 75 },
-                { id: 3, data: '07/04/2025', ordem_de_servico: 'OS-000012', descricao: 'Fabricação de Produto C', progresso: 30 },
-                { id: 4, data: '06/04/2025', ordem_de_servico: 'OS-000015', descricao: 'Fabricação de Produto D', progresso: 90 },
-                { id: 5, data: '05/04/2025', ordem_de_servico: 'OS-000010', descricao: 'Fabricação de Produto E', progresso: 60 },
-                { id: 6, data: '04/04/2025', ordem_de_servico: 'OS-000020', descricao: 'Fabricação de Produto F', progresso: 80 },
-                { id: 7, data: '03/04/2025', ordem_de_servico: 'OS-000017', descricao: 'Fabricação de Produto G', progresso: 40 },
-                { id: 8, data: '02/04/2025', ordem_de_servico: 'OS-000014', descricao: 'Fabricação de Produto H', progresso: 70 },
-                { id: 9, data: '01/04/2025', ordem_de_servico: 'OS-000019', descricao: 'Fabricação de Produto I', progresso: 20 },
-                { id: 10, data: '31/03/2025', ordem_de_servico: 'OS-000016', descricao: 'Fabricação de Produto J', progresso: 85 }
-            ],
+            historicoFabricacao: [],
             columnenthistoricoFabricacao: [
                 { key: 'ordem_de_servico', label: 'OS', onClick: this.abrirOrdemServico },
                 { key: 'data', label: 'Data' },
@@ -309,33 +181,6 @@ export default {
                 { key: 'cliente', label: 'Cliente' }
             ],
 
-            weeklyChart: {
-                options: {
-                    chart: {
-                        toolbar: { show: false },
-                        zoom: { enabled: false },
-                    },
-                    grid: {
-                        borderColor: '#eee',
-                        strokeDashArray: 4,
-                    },
-                    xaxis: { labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false } },
-                    yaxis: { labels: { show: false }, axisTicks: { show: false }, axisBorder: { show: false } },
-                    dataLabels: { enabled: false },
-                    plotOptions: {
-                        bar: {
-                            borderRadius: 8,
-                            columnWidth: '45%',
-                        },
-                    },
-                    colors: ['#a78bfa'],
-                },
-                series: [
-                    {
-                        data: [30, 40, 45, 70, 40, 30, 60]
-                    }
-                ]
-            },
             profitChart: {
                 options: {
                     chart: { toolbar: { show: false }, zoom: { enabled: false }, sparkline: { enabled: true } },
@@ -379,7 +224,38 @@ export default {
         },
         abrirOrdemServico(item) {
             this.$router.push('/producao/ordem_servico/' + item.ordem_de_servico);
-        }
+        },
+        async buscarInfoCard() {
+            try {
+                const response = await axios.get('/api/dashboard/infoCard')
+                this.infoCard = response.data.infoCard
+            } catch (error) {
+                console.error('Erro ao buscar infoCard:', error)
+            }
+        },
+        async buscarGrafico15Dias() {
+            try {
+                const response = await axios.get('/api/dashboard/grafico15Dias')
+                this.grafico15Dias = response.data.grafico15Dias
+                this.totalPedidos15Dias = this.grafico15Dias.series[0].data.reduce((acc, val) => acc + val, 0)
+            } catch (error) {
+                console.error('Erro ao buscar gráfico de 15 dias:', error)
+            }
+        },
+        async buscarHistoricoFabricacao() {
+            try {
+                const response = await axios.get('/api/dashboard/historicoFabricacao')
+                this.historicoFabricacao = response.data.historicoFabricacao
+                console.log('Histórico de fabricação:', this.historicoFabricacao)
+            } catch (error) {
+                console.error('Erro ao buscar histórico de fabricação:', error)
+            }
+        },
     },
+    async mounted() {
+        this.buscarInfoCard();
+        this.buscarGrafico15Dias();
+        this.buscarHistoricoFabricacao();
+    }
 }
 </script>

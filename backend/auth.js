@@ -1,6 +1,5 @@
 import express from 'express';
 import db from './db.js';
-import bcrypt from 'bcryptjs';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 
@@ -30,7 +29,7 @@ router.post('/login', async (req, res) => {
         id_nivel: usuario.id_nivel,
       },
       process.env.JWT_SECRET,
-      { expiresIn: '1m' }
+      { expiresIn: '1h' }
     );
 
     res.json({

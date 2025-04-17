@@ -6,6 +6,7 @@ import db from './db.js';  // Certifique-se de que o arquivo db.js está correta
 
 import authRoutes from './auth.js';
 import verificarToken from './authMiddleware.js';
+import { infoCard, grafico15dias, historicaFabricacao, ultimos10registroentrega } from './dashboard.js';
 
 dotenv.config();
 
@@ -28,6 +29,10 @@ app.get('/api/usuarios', async (req, res) => {
     }
 });
 
+infoCard(app, db);
+grafico15dias(app, db);
+historicaFabricacao(app, db);
+ultimos10registroentrega(app, db);
 // Exemplo de rota protegida
 app.get('/api/protegido', verificarToken, (req, res) => {
   res.json({ mensagem: `Olá, ${req.user.nome}, você acessou uma rota protegida!` });

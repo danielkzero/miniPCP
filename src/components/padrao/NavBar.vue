@@ -63,7 +63,7 @@
                             <!-- Botão do Avatar -->
                             <div>
                                 <button @click="toggleUserMenu" ref="userButton"
-                                    class="flex text-sm bg-gray-100 rounded-full focus:ring-gray-300"
+                                    class="flex text-sm bg-gray-100 rounded-full focus:ring-gray-300 cursor-pointer"
                                     aria-expanded="false">
                                     <span class="sr-only">Menu de usuário</span>
                                     <i class="bx bxs-user-circle text-3xl text-gray-500"></i>
@@ -94,9 +94,10 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">
+                                            <router-link to="sair"
+                                                class="block px-4 py-2 text-sm text-red-600 hover:bg-red-50">
                                                 <i class="bx bx-power-off me-2"></i> Sair
-                                            </a>
+                                            </router-link>
                                         </li>
                                     </ul>
                                 </div>
