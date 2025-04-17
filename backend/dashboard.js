@@ -202,8 +202,9 @@ export function ultimos10registroentrega(app, db) {
         try {
             const [rows] = await db.execute(`
                 SELECT 
-                    fncCodigo(a.id_ordem_entrega, '8001') numero_de_serie, 
-                    a.data_cadastro data_de_entrega, 
+                    a.id,
+                    fncCodigo(a.id_ordem_entrega, '8001') numero_serie, 
+                    a.data_cadastro data, 
                     (SELECT b.nome FROM aion_clientes b WHERE b.id=a.id_cliente) AS cliente 
                 FROM aion_ordem_entrega_itens a GROUP BY a.id_ordem_entrega ORDER BY a.id DESC LIMIT 10
             `);
