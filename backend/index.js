@@ -7,6 +7,9 @@ import db from './db.js';  // Certifique-se de que o arquivo db.js está correta
 import authRoutes from './auth.js';
 import verificarToken from './authMiddleware.js';
 import { infoCard, grafico15dias, historicaFabricacao, ultimos10registroentrega } from './dashboard.js';
+import { usuarios, niveis } from './usuarios.js';
+import { clientes } from './clientes.js';
+import { estoque } from './estoque.js';
 
 dotenv.config();
 
@@ -18,22 +21,15 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
-// Rota para listar todos os usuários
-app.get('/api/usuarios', async (req, res) => {
-    try {
-      const [rows] = await db.execute('SELECT id, nome, login FROM aion_usuarios WHERE excluido = 0 AND ativo = 1');
-      res.json({ usuarios: rows });
-    } catch (error) {
-      console.error(error);
-      res.status(500).json({ error: 'Erro ao listar os usuários' });
-    }
-});
-
+estoque(app, db);
+clientes(app, db);
+usuarios(app, db);
+niveis(app, db);
 infoCard(app, db);
 grafico15dias(app, db);
 historicaFabricacao(app, db);
 ultimos10registroentrega(app, db);
-// Exemplo de rota protegida
+
 app.get('/api/protegido', verificarToken, (req, res) => {
   res.json({ mensagem: `Olá, ${req.user.nome}, você acessou uma rota protegida!` });
 });

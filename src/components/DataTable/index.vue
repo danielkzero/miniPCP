@@ -45,7 +45,8 @@
                                     :class="(item[subcolumn_name] ? 'text-indigo-600 hover:text-indigo-700' : 'text-gray-300')"
                                     @click="(item[subcolumn_name] ? toggleChildren(item.id) : false)"></i>
                             </td>
-                            <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap">
+                            <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap"
+                                :class="col.uppercase ? 'uppercase' : ''">
                                 <span v-if="col.onClick" @click="col.onClick(item)">
                                     <template v-if="vetifyType(item, col)?.isHtml">
                                         <span v-html="vetifyType(item, col).content">
@@ -85,7 +86,7 @@
                                     <i class="bx bx-printer"></i>
                                 </button>
                                 <button @click="deleteItem(item.id)" class="bg-red-500 text-white px-2 py-1 rounded"
-                                    v-if="$attrs.onDeleteItem">
+                                    v-if="$attrs.onDeleteItem && !item.imortal">
                                     <i class="bx bx-trash"></i>
                                 </button>
                             </td>
@@ -155,15 +156,44 @@
 
 
         <!-- Pagination -->
-        <div class="flex justify-center space-x-2 mt-4" v-if="pagination">
-            <button @click="previousPage" :disabled="currentPage === 1"
-                class="bg-gray-500 text-white px-3 py-1 rounded disabled:opacity-50">
-                Anterior
+        <div class="flex justify-center items-center space-x-1 my-4" v-if="pagination && totalPages > 1">
+            <div>
+                <label class="text-sm mr-2 self-center">Itens por página:</label>
+                <select v-model.number="itemsPerPage" @change="currentPage = 1"
+                    class="border rounded px-2 py-1 text-sm bg-white text-gray-700 focus:outline-none focus:ring">
+                    <option v-for="n in itemsInPage" :key="n" :value="n">{{ n }}</option>
+                </select>
+            </div>
+            <button @click="goToPage(1)" :disabled="currentPage === 1"
+                :class="['px-2 py-1 rounded text-sm', currentPage > 1 ? 'bg-indigo-600 text-white cursor-pointer' : 'bg-gray-200 text-gray-700']"
+                title="Primeira">
+                <i class='bx bx-chevrons-left'></i>
             </button>
-            <span>Página {{ currentPage }} de {{ totalPages }}</span>
+
+            <button @click="previousPage" :disabled="currentPage === 1"
+                :class="['px-2 py-1 rounded text-sm', currentPage > 1 ? 'bg-indigo-600 text-white cursor-pointer' : 'bg-gray-200 text-gray-700']"
+                title="Anterior">
+                <i class='bx bx-chevron-left'></i>
+            </button>
+
+            <span v-for="page in visiblePages" :key="page">
+                <button v-if="page !== '...'" @click="goToPage(page)"
+                    :class="['px-2 py-1 rounded text-sm', currentPage === page ? 'bg-indigo-600 text-white cursor-pointer' : 'bg-gray-200 text-gray-700 cursor-pointer']">
+                    {{ page }}
+                </button>
+                <span v-else class="px-2 text-gray-500">...</span>
+            </span>
+
             <button @click="nextPage" :disabled="currentPage >= totalPages"
-                class="bg-gray-500 text-white px-3 py-1 rounded disabled:opacity-50">
-                Próximo
+                :class="['px-2 py-1 rounded text-sm', currentPage < totalPages ? 'bg-indigo-600 text-white cursor-pointer' : 'bg-gray-200 text-gray-700']"
+                title="Próxima">
+                <i class='bx bx-chevron-right'></i>
+            </button>
+
+            <button @click="goToPage(totalPages)" :disabled="currentPage >= totalPages"
+                :class="['px-2 py-1 rounded text-sm', currentPage < totalPages ? 'bg-indigo-600 text-white cursor-pointer' : 'bg-gray-200 text-gray-700']"
+                title="Última">
+                <i class='bx bx-chevrons-right'></i>
             </button>
         </div>
     </div>
@@ -183,7 +213,11 @@ export default {
         filhos: Boolean,
         pesquisar: Boolean,
         pagination: Boolean,
-        classTable: String
+        classTable: String,
+        itemsInPage: {
+            type: Array,
+            default: () => [10, 20]
+        }
     },
     data() {
         return {
@@ -196,6 +230,10 @@ export default {
         };
     },
     computed: {
+        updateItemsPerPage(value) {
+            this.itemsPerPage = value;
+            this.currentPage = 1; // volta pra primeira página
+        },
         /**
          * Filtra e ordena os dados antes de paginar
          */
@@ -208,15 +246,34 @@ export default {
          * Retorna os dados paginados
          */
         paginatedData() {
-            const start = (this.currentPage - 1) * this.itemsPerPage;
-            const end = start + this.itemsPerPage;
+            const start = Number(this.currentPage - 1) * Number(this.itemsPerPage);
+            const end = start + Number(this.itemsPerPage);
             return this.filteredData.slice(start, end);
         },
         /**
-         * Calcula o total de páginas
-         */
+             * Calcula o total de páginas
+             */
         totalPages() {
             return Math.ceil(this.filteredData.length / this.itemsPerPage);
+        },
+        visiblePages() {
+            const total = this.totalPages;
+            const current = this.currentPage;
+            const pages = [];
+
+            if (total <= 7) {
+                for (let i = 1; i <= total; i++) pages.push(i);
+            } else {
+                if (current <= 4) {
+                    pages.push(1, 2, 3, 4, 5, '...', total);
+                } else if (current >= total - 3) {
+                    pages.push(1, '...', total - 4, total - 3, total - 2, total - 1, total);
+                } else {
+                    pages.push(1, '...', current - 1, current, current + 1, '...', total);
+                }
+            }
+
+            return pages;
         }
     },
     methods: {
@@ -263,6 +320,35 @@ export default {
             if (Array.isArray(value)) {
                 // Verifica o tipo desejado
                 if (col.type === "array") {
+                    if (col.typeArray == "arvore_nivel") {
+                        // exemplo: retorna os tipos com ícones
+                        let html = `
+                        <table class="min-w-full">
+                            <thead class="bg-gray-100 text-left text-xsfont-medium text-gray-500 uppercase tracking-wider border-b-2 border-gray-200">
+                                <tr class="text-center">
+                                    <th class="px-2 py-1 text-left">Página</th>
+                                    <th class="px-2 py-1">Visualizar</th>
+                                    <th class="px-2 py-1">Criar</th>
+                                    <th class="px-2 py-1">Editar</th>
+                                    <th class="px-2 py-1">Excluir</th>
+                                </tr>
+                            </thead>
+                            `;
+                        html += value.map((item) => {
+                            return `
+                            <tbody class="divide-y divide-gray-200 text-gray-500">
+                                <tr class="odd:bg-gray-100 even:bg-gray-100 text-center">
+                                    <td class="min-w-40 text-left px-2"><i class="bx bx-file"></i> ${item.pagina}</td>
+                                    <td>${item.visualizar ? "<i class='bx bx-check text-xl text-green-500'></i>" : "<i class='bx bx-x text-xl text-red-500'></i>"}</td>
+                                    <td>${item.criar ? "<i class='bx bx-check text-xl text-green-500'></i>" : "<i class='bx bx-x text-xl text-red-500'></i>"}</td>
+                                    <td>${item.editar ? "<i class='bx bx-check text-xl text-green-500'></i>" : "<i class='bx bx-x text-xl text-red-500'></i>"}</td>
+                                    <td>${item.excluir ? "<i class='bx bx-check text-xl text-green-500'></i>" : "<i class='bx bx-x text-xl text-red-500'></i>"}</td>
+                                </tr>
+                            </tbody>`;
+                        }).join("");
+                        html += `</table>`;
+                        return { isHtml: true, content: html };
+                    }
 
                     if (col.typeArray == "anexo") {
                         // exemplo: retorna os tipos com ícones
@@ -408,9 +494,11 @@ export default {
         previousPage() {
             if (this.currentPage > 1) this.currentPage--;
         },
-
         nextPage() {
             if (this.currentPage < this.totalPages) this.currentPage++;
+        },
+        goToPage(page) {
+            if (page !== '...') this.currentPage = page;
         }
     }
 };

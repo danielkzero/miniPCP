@@ -29,23 +29,22 @@
     }
 },
 */
-import { historico_estoque } from '@/dados/EstruturaEstoqueHistorico.json'; // Importa os dados diretamente do JSON
 import DataTable from '@/components/DataTable/index.vue'; // Table component
+import axios from '@/axios.js'; // Importa o Axios para requisições HTTP
 export default {
     components: {
         DataTable
     },
     data() {
         return {
-            historico_estoque, // Define os dados diretamente
+            historico_estoque: [], // Define os dados diretamente
             columns: [
                 { key: "id", label: "ID", type: "text" },
-                { key: "id_produto", label: "ID Produto", type: "text" },
+                { key: "codigo_produto", label: "ID Produto", type: "text" },
                 { key: "nome_produto", label: "Nome Produto", type: "text" },
-                { key: "tipo_operacao.nome", label: "Tipo Operação", type: "text" },
+                { key: "tipo_operacao_estoque", label: "Tipo Operação", type: "text" },
                 { key: "quantidade", label: "Quantidade", type: "number" },
-                { key: "datas.nome_autor_cadastro", label: "Autor", type: "text" },
-                { key: 'datas.data_cadastro', label: 'Cadastro', type: 'date' },
+                { key: "cadastrado_em", label: "Autor", type: "date" },
             ]
         };
     },
@@ -58,8 +57,22 @@ export default {
         },
         handleCreateItem(id) {
             console.log(`Novo Cliente ${id} criado`);
+        },
+        handleGetItems() {
+            let _this = this;
+            axios.get('/api/historico_estoque')
+                .then(response => {
+                    _this.historico_estoque = response.data.historico_estoque;
+                    console.log(response);
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar histórico de estoque:', error);
+                });
         }
 
-    }
+    },
+    mounted() {
+        this.handleGetItems(); // Chama a função para obter os itens ao montar o componente
+    },
 }
 </script>
