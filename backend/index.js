@@ -10,6 +10,12 @@ import { infoCard, grafico15dias, historicaFabricacao, ultimos10registroentrega 
 import { usuarios, niveis } from './usuarios.js';
 import { clientes } from './clientes.js';
 import { estoque } from './estoque.js';
+import { operacao } from './operacao.js';
+import { setor } from './setor.js';
+import { grupo } from './grupo.js';
+import { unidades } from './unidades.js';
+import { produtos } from './produtos.js';
+import { ordemproducao } from './ordemProducao.js';
 
 dotenv.config();
 
@@ -21,6 +27,12 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
+ordemproducao(app, db);
+produtos(app, db);
+unidades(app, db);
+grupo(app, db);
+setor(app, db);
+operacao(app, db);
 estoque(app, db);
 clientes(app, db);
 usuarios(app, db);

@@ -38,6 +38,18 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
+                    <!-- Skeleton Loader -->
+                    <template v-if="loading">
+                        <tr v-for="i in 10" :key="'skeleton-' + i">
+                            <td v-for="col in (columns.length + (actions == true ? 1 : 0))" class="p-3 ">
+                                <div class="space-y-2.5 animate-pulse max-w-lg">
+                                    <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700"></div>
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+
+
                     <template v-for="item in paginatedData" :key="item.id">
                         <tr class="odd:bg-white even:bg-gray-50">
                             <td class="px-6 py-2 whitespace-nowrap w-1 h-1" v-if="filhos">
@@ -214,6 +226,7 @@ export default {
         pesquisar: Boolean,
         pagination: Boolean,
         classTable: String,
+        loading: Boolean,
         itemsInPage: {
             type: Array,
             default: () => [10, 20]

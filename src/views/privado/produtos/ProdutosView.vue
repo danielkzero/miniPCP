@@ -1,18 +1,20 @@
 <template>
     <DataTable :data="produtos" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
-        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
+        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :pagination="true"
+        :loading="loader" />
 </template>
 
 <script>
-import { produtos } from '@/dados/EstruturaProduto.json';
 import DataTable from '@/components/DataTable/index.vue'; // Table component
+import axios from '@/axios.js'; // Importa o Axios para requisições HTTP
 export default {
     components: {
         DataTable
     },
     data() {
         return {
-            produtos, // Define os dados diretamente
+            loader: false,
+            produtos: [], // Define os dados diretamente
             columns: [
                 { key: "codigos.CODIGO", label: "Código", type: "text" },
                 { key: 'anexos', label: 'anexo', type: "array", typeArray: "anexo", keyArray: "base64" },
@@ -38,7 +40,24 @@ export default {
         },
         handleCreateItem(id) {
             console.log(`Nova Máquina ${id} criada`);
+        },
+        handleGetItems() {
+            let _this = this;
+            _this.loader = true; // Inicia o loader
+            axios.get('/api/produto')
+                .then(response => {
+                    _this.produtos = response.data.produtos;
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    _this.loader = false; // Para o loader
+                });
         }
+    },
+    mounted() {
+        this.handleGetItems(); // Chama a função para obter os itens ao montar o componente
     }
 }
 </script>

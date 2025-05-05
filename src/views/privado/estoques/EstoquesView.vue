@@ -1,5 +1,5 @@
 <template>
-    <DataTable :data="estoque" :columns="columns" classTable="text-xs" :pesquisar="true"
+    <DataTable :data="estoque" :columns="columns" classTable="text-xs" :pesquisar="true" :pagination="true"
         @createItem="handleCreateItem" />
 </template>
 

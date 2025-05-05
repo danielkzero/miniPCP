@@ -3,19 +3,20 @@
         <DataTable :data="ordem_producao" :columns="columns" :actions="true" :pesquisar="true" urlCriar="/pedidos/novo"
             @hideItem="handleHideItem" @commentItem="handleCommentItem" @printItem="handlePrintItem"
             @deleteItem="handleDeleteItem" :subcolumns="subcolumns" :subcolumn_name="subcolumn_name" :filhos="true"
-            classTable="text-xs" />
+            classTable="text-xs" :loading="loader" :pagination="true" />
     </div>
 </template>
 
 <script>
 import { ordem_producao } from '@/dados/EstruturaOrdemProducao.json'; // Importing order data from JSON
 import DataTable from '@/components/DataTable/index.vue'; // Table component
-
+import axios from '@/axios.js'; // Importing Axios for HTTP requests
 export default {
     components: { DataTable },
     data() {
         return {
-            ordem_producao, // Order data loaded from JSON
+            loader: false, // Loader state for data fetching
+            ordem_producao: [], // Order data loaded from JSON
             showModal: false, // Controls modal visibility
             selectedItem: null, // Currently selected item for editing
             columns: [
@@ -60,6 +61,26 @@ export default {
         handleDeleteItem(id) {
             this.ordem_producao = this.pedidos.filter(pedido => pedido.id !== id);
         },
+        handleGetItems() {
+            let _this = this;
+            _this.loader = true; // Start loader
+            axios.get('/api/ordemproducao')
+                .then(response => {
+                    setTimeout(() => {
+                        _this.loader = false; // Stop loader
+                        _this.ordem_producao = response.data.ordem_producao; // Update orders after 2 seconds
+                    }, 2000); // Wait 2 seconds to show data
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    //_this.loader = false; // Stop loader
+                });
+        }
     },
+    mounted() {
+        this.handleGetItems(); // Call function to get items when component is mounted
+    }
 };
 </script>

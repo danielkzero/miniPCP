@@ -1,25 +1,28 @@
 <template>
     <DataTable :data="grupos" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
-        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
+        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :pagination="true"
+        :loading="loader" />
 </template>
 
 <script>
 import { grupos } from '@/dados/EstruturaGrupos.json';
 import DataTable from '@/components/DataTable/index.vue'; // Table component
+import axios from '@/axios.js'; // Importa o Axios para requisições HTTP
 export default {
     components: {
         DataTable
     },
     data() {
         return {
-            grupos, // Define os dados diretamente
+            loader: false,
+            grupos: [], // Define os dados diretamente
             columns: [
                 { key: "id", label: "ID", type: "text" },
                 { key: "id_pai", label: "Pai", type: "text" },
-                { key: 'sufixo', label: 'Sufixo', type: "array", typeArray: "anexo", keyArray: "base64" },
+                { key: 'sufixo_identificacao', label: 'Sufixo', type: 'text' },
                 { key: "nome", label: "Nome", type: "text" },
                 { key: "materia_prima", label: "Matéria prima", type: "YesOrNo" },
-                { key: "datas.data_cadastro", label: "Cadastro", type: "date" }
+                { key: "data_cadastro", label: "Cadastro", type: "datetime" }
             ]
         };
     },
@@ -32,7 +35,28 @@ export default {
         },
         handleCreateItem(id) {
             console.log(`Nova Máquina ${id} criada`);
+        },
+        handleGetItems() {
+            let _this = this;
+            _this.loader = true; // Inicia o loader
+            axios.get('/api/grupo')
+                .then(response => {
+                    // wait for 2 seconds to show the data
+                    setTimeout(() => {
+                        _this.loader = false; // Para o loader
+                        _this.grupos = response.data.grupos; // Atualiza os setores após 2 segundos
+                    }, 2000); // Espera 2 segundos para mostrar os dados
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    //_this.loader = false; // Para o loader
+                });
         }
+    },
+    mounted() {
+        this.handleGetItems();
     }
 }
 </script>

@@ -1,22 +1,25 @@
 <template>
     <DataTable :data="unidades" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
-        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
+        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :loading="loader" />
 </template>
 
 <script>
 import { unidades } from '@/dados/EstruturaUnidade.json';
 import DataTable from '@/components/DataTable/index.vue'; // Table component
+import axios from '@/axios.js'; // Importa o Axios para requisições HTTP
 export default {
     components: {
         DataTable
     },
     data() {
         return {
-            unidades, // Define os dados diretamente
+            loader: false,
+            unidades: [], // Define os dados diretamente
             columns: [
-                { key: "nome_unidade", label: "Código", type: "text" },
-                { key: "descricao", label: "Descrição", type: "text" },
-                { key: "datas.data_cadastro", label: "Cadastro", type: "date" }
+                { key: "id", label: "#", type: "text" },
+                { key: "unidade", label: "Unid.", type: "text" },
+                { key: "descricao", label: "Descrição", type: "text", uppercase: true },
+                { key: "data_cadastro", label: "Cadastro", type: "datetime" }
             ]
         };
     },
@@ -29,7 +32,29 @@ export default {
         },
         handleCreateItem(id) {
             console.log(`Nova Máquina ${id} criada`);
+        },
+        handleGetItems() {
+            let _this = this;
+            _this.loader = true; // Inicia o loader
+            axios.get('/api/unidade')
+                .then(response => {
+
+                    // wait for 2 seconds to show the data
+                    setTimeout(() => {
+                        _this.unidades = response.data.unidades;
+                        _this.loader = false; // Para o loader
+                    }, 2000);
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    //_this.loader = false; // Para o loader
+                });
         }
+    },
+    mounted() {
+        this.handleGetItems(); // Chama a função para obter os itens ao montar o componente
     }
 }
 </script>
