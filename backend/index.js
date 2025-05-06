@@ -16,6 +16,8 @@ import { grupo } from './grupo.js';
 import { unidades } from './unidades.js';
 import { produtos } from './produtos.js';
 import { ordemproducao } from './ordemProducao.js';
+import { registroentrega } from './registroentrega.js';
+import { maquinas } from './maquinas.js';
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
+maquinas(app, db);
+registroentrega(app, db);
 ordemproducao(app, db);
 produtos(app, db);
 unidades(app, db);

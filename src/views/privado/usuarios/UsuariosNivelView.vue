@@ -1,7 +1,7 @@
 <template>
     <DataTable :data="usuarios_nivel" :columns="columns" classTable="text-xs" :pesquisar="true" :subcolumns="subcolumns"
         :subcolumn_name="subcolumn_name" @deleteItem="handleDeleteItem" @editItem="handleEditItem"
-        @createItem="handleCreateItem" :actions="true" :filhos="true" />
+        @createItem="handleCreateItem" :actions="true" :filhos="true" :pagination="true" />
 </template>
 
 <script>

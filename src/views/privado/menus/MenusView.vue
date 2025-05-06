@@ -1,7 +1,7 @@
 <template>
     <DataTable :data="menu" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
         @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :filhos="true"
-        :subcolumn_name="subcolumn_name" :subcolumns="subcolumns" />
+        :subcolumn_name="subcolumn_name" :subcolumns="subcolumns" :pagination="true" />
 </template>
 
 <script>

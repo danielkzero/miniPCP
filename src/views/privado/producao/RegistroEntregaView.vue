@@ -1,35 +1,60 @@
 <template>
-    <DataTableRegistroEntrega :data="data" :columns="columns" :pesquisar="true" @createItem="createItem">
-    </DataTableRegistroEntrega>
+    <DataTable :data="registro_entrega" :columns="columns" :pesquisar="true" :subcolumns="subcolumns"
+        :subcolumn_name="subcolumn_name" :filhos="true" classTable="text-xs" :loading="loader" :pagination="true"
+        :itemsInPage="[20, 50, 100]" sortKey="id" sortOrder="desc" />
 </template>
 
 <script>
-import DataTableRegistroEntrega from "@/components/DataTable/RegistroEntrega.vue";
-import { registro_entrega } from '@/dados/EstruturaRegistroEntrega.json';
-
+import DataTable from '@/components/DataTable/index.vue'; // Importa o componente DataTable
+import axios from '@/axios.js'; // Importa o Axios para requisições HTTP
 export default {
     components: {
-        DataTableRegistroEntrega
+        DataTable
     },
     data() {
         return {
-            data: registro_entrega, // Define os dados diretamente
+            loader: false, // Variável para controle do loader
+            registro_entrega: [], // Define os dados diretamente
             columns: [
-                { key: 'id', label: 'id', type: "number" },
+                { key: 'id', label: 'Nº', type: "number" },
+            ],
+            subcolumn_name: "itens",
+            subcolumns: [
+                { key: 'id_filho', label: 'id', type: "number" },
                 { key: "codigo_pedido", label: "Código Pedido", type: "text" },
                 { key: "codigo_ordem_producao", label: "Ordem Produção", type: "text" },
                 { key: "codigo", label: "Código", type: "text" },
                 { key: "nome_produto", label: "Descrição", type: "text" },
                 { key: "quantidade_emitida", label: "Qtd Emitida", type: "number" },
-                { key: "peso", label: "Peso", type: "number" },
-                { key: "datas.data_cadastro", label: "cadastro", type: "date" }
-            ]
+                { key: "peso", label: "Peso", type: "number", decimal: 3 },
+                { key: "data_cadastro", label: "cadastro", type: "datetime" }
+            ],
         };
     },
     methods: {
         createItem() {
             this.$router.push('/producao/registro_entrega/novo');
+        },
+        handleGetItems() {
+            let _this = this;
+            _this.loader = true; // Inicia o loader
+            axios.get('/api/registroentrega')
+                .then(response => {
+                    setTimeout(() => {
+                        _this.loader = false; // Para o loader
+                        _this.registro_entrega = response.data.registro_entrega; // Atualiza os setores após 2 segundos
+                    }, 2000); // Espera 2 segundos para mostrar os dados
+                })
+                .catch(error => {
+                    console.error(error);
+                })
+                .finally(() => {
+                    //_this.loader = false; // Para o loader
+                });
         }
+    },
+    mounted() {
+        this.handleGetItems(); // Chama a função para obter os itens ao montar o componente
     }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
     <DataTable :data="produtos" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
-        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :pagination="true"
-        :loading="loader" />
+        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :pagination="true" :loading="loader"
+        :itemsInPage="[20, 50, 100]" />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
             columns: [
                 { key: "codigos.CODIGO", label: "Código", type: "text" },
                 { key: 'anexos', label: 'anexo', type: "array", typeArray: "anexo", keyArray: "base64" },
-                { key: "descricoes.nome", label: "Descrição", type: "text" },
+                { key: "descricoes.nome", label: "Descrição", type: "text", class: "text-wrap" },
                 { key: "nome_unidade", label: "Un.", type: "text" },
 
                 { key: "dimensoes.largura", label: "Largura", type: "number" },

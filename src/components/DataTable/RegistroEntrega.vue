@@ -69,7 +69,7 @@ export default {
         return {
             search: "",
             sortKey: "id",
-            sortOrder: "asc",
+            sortOrder: "desc",
             showModal: false,
             selectedItem: null
         };
@@ -79,6 +79,7 @@ export default {
             if (!this.data) {
                 return true;
             }
+            console.log(this.data);
             return this.data
                 .filter(item => JSON.stringify(item).toLowerCase().includes(this.search.toLowerCase()))
                 .sort((a, b) => {

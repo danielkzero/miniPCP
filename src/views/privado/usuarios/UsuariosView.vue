@@ -1,6 +1,6 @@
 <template>
     <DataTable :data="usuarios" :columns="columns" classTable="text-xs" :pesquisar="true" @deleteItem="handleDeleteItem"
-        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" />
+        @editItem="handleEditItem" @createItem="handleCreateItem" :actions="true" :pagination="true" />
 </template>
 
 <script>

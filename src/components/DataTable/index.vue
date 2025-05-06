@@ -20,7 +20,7 @@
             </button>
         </div>
 
-        <div class="overflow-auto">
+        <div class="max-h-lh overflow-auto">
             <!-- Table -->
             <table class="min-w-full divide-y divide-gray-200" :class="classTable">
                 <thead class="bg-gray-50 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -41,7 +41,8 @@
                     <!-- Skeleton Loader -->
                     <template v-if="loading">
                         <tr v-for="i in 10" :key="'skeleton-' + i">
-                            <td v-for="col in (columns.length + (actions == true ? 1 : 0))" class="p-3 ">
+                            <td v-for="col in (columns.length + (actions == true ? 1 : 0) + (filhos ? 1 : 0))"
+                                class="p-3 ">
                                 <div class="space-y-2.5 animate-pulse max-w-lg">
                                     <div class="h-2.5 bg-gray-300 rounded-full dark:bg-gray-700"></div>
                                 </div>
@@ -57,8 +58,8 @@
                                     :class="(item[subcolumn_name] ? 'text-indigo-600 hover:text-indigo-700' : 'text-gray-300')"
                                     @click="(item[subcolumn_name] ? toggleChildren(item.id) : false)"></i>
                             </td>
-                            <td v-for="col in columns" :key="col.key" class="px-6 py-2 whitespace-nowrap"
-                                :class="col.uppercase ? 'uppercase' : ''">
+                            <td v-for="col in columns" :key="col.key" class="px-6 py-2 "
+                                :class="[col.uppercase ? 'uppercase' : '', col.class ?? 'whitespace-nowrap']">
                                 <span v-if="col.onClick" @click="col.onClick(item)">
                                     <template v-if="vetifyType(item, col)?.isHtml">
                                         <span v-html="vetifyType(item, col).content">
@@ -213,6 +214,7 @@
 
 <script>
 import moment from "moment";
+import { ref } from "vue";
 
 export default {
     inheritAttrs: false,
@@ -230,16 +232,25 @@ export default {
         itemsInPage: {
             type: Array,
             default: () => [10, 20]
-        }
+        },
+        sortKey: String,
+        sortOrder: String,
     },
-    data() {
+    setup(props) {
+        const search = ref("");
+        const sortKey = ref(props.sortKey ?? "id");
+        const sortOrder = ref(props.sortOrder ?? "desc");
+        const currentPage = ref(1);
+        const itemsPerPage = ref((props.itemsInPage?.[0]) || 10);
+        const expandedRows = ref({});
+
         return {
-            search: "",
-            sortKey: "id",
-            sortOrder: "asc",
-            currentPage: 1,
-            itemsPerPage: 10,
-            expandedRows: {} // Armazena o estado de expansão
+            search,
+            sortKey,
+            sortOrder,
+            currentPage,
+            itemsPerPage,
+            expandedRows
         };
     },
     computed: {
@@ -297,11 +308,32 @@ export default {
 
         searchPredicate(item) {
             const searchTerm = this.search.toLowerCase();
-            return this.columns.some(col => {
-                const value = String(item[col.key]).toLowerCase();
-                return value.includes(searchTerm);
-            });
+
+            const getNestedValue = (obj, path) => {
+                return path.split('.').reduce((acc, key) => acc?.[key], obj);
+            };
+
+            const matchesItem = (obj) => {
+                return this.columns.some(col => {
+                    const rawValue = getNestedValue(obj, col.key);
+                    const value = rawValue != null ? String(rawValue).toLowerCase() : '';
+                    return value.includes(searchTerm);
+                });
+            };
+
+            const searchRecursive = (obj) => {
+                if (matchesItem(obj)) return true;
+
+                if (Array.isArray(obj.children)) {
+                    return obj.children.some(child => searchRecursive(child));
+                }
+
+                return false;
+            };
+
+            return searchRecursive(item);
         },
+
 
         sortPredicate(a, b) {
             const getNestedValue = (obj, path) => path.split(".").reduce((acc, part) => acc && acc[part], obj);
@@ -395,7 +427,11 @@ export default {
                 case "text":
                     return value ?? "";
                 case "number":
-                    return value ?? 0;
+                    if (col.decimal) {
+                        return value ? Number(value).toLocaleString("pt-BR", { minimumFractionDigits: col.decimal }) : 0;
+                    } else {
+                        return value ?? 0;
+                    }
                 case "date":
                     return this.formatData(value);
                 case "currency":

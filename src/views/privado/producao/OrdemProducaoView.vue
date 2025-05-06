@@ -3,12 +3,11 @@
         <DataTable :data="ordem_producao" :columns="columns" :actions="true" :pesquisar="true" urlCriar="/pedidos/novo"
             @hideItem="handleHideItem" @commentItem="handleCommentItem" @printItem="handlePrintItem"
             @deleteItem="handleDeleteItem" :subcolumns="subcolumns" :subcolumn_name="subcolumn_name" :filhos="true"
-            classTable="text-xs" :loading="loader" :pagination="true" />
+            classTable="text-xs" :loading="loader" :pagination="true" :itemsInPage="[20, 50, 100]" />
     </div>
 </template>
 
 <script>
-import { ordem_producao } from '@/dados/EstruturaOrdemProducao.json'; // Importing order data from JSON
 import DataTable from '@/components/DataTable/index.vue'; // Table component
 import axios from '@/axios.js'; // Importing Axios for HTTP requests
 export default {
@@ -24,7 +23,7 @@ export default {
                 { key: "codigo_pedido", label: "Pedido", type: "number" },
                 { key: "nome_cliente", label: "Cliente", type: "text" },
                 { key: "codigo_produto", label: "Código", type: "text" },
-                { key: "descricao_produto", label: "Descrição", type: "text" },
+                { key: "descricao_produto", label: "Descrição", type: "text", class: "text-wrap" },
                 { key: "quantidade_pedida", label: "Qtd.", type: "number" },
                 { key: "quantidade_produzida", label: "Ent.", type: "number" },
                 { key: "datas.data_previsao_entrega", label: "Prev. Entrega", type: "date" },
