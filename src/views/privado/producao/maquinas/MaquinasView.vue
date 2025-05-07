@@ -50,16 +50,13 @@ export default {
             _this.loader = true; // Inicia o loader
             axios.get('/api/maquinas')
                 .then(response => {
-                    setTimeout(() => {
-                        _this.loader = false; // Para o loader
-                        _this.maquinas = response.data.maquinas; // Atualiza os setores após 2 segundos
-                    }, 2000); // Espera 2 segundos para mostrar os dados
+                    _this.maquinas = response.data.maquinas;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Para o loader
+                    _this.loader = false; // Para o loader
                 });
         }
     },

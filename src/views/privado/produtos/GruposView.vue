@@ -41,17 +41,13 @@ export default {
             _this.loader = true; // Inicia o loader
             axios.get('/api/grupo')
                 .then(response => {
-                    // wait for 2 seconds to show the data
-                    setTimeout(() => {
-                        _this.loader = false; // Para o loader
-                        _this.grupos = response.data.grupos; // Atualiza os setores após 2 segundos
-                    }, 2000); // Espera 2 segundos para mostrar os dados
+                    _this.grupos = response.data.grupos;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Para o loader
+                    _this.loader = false; // Para o loader
                 });
         }
     },

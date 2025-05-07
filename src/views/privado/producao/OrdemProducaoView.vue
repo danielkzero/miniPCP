@@ -65,16 +65,13 @@ export default {
             _this.loader = true; // Start loader
             axios.get('/api/ordemproducao')
                 .then(response => {
-                    setTimeout(() => {
-                        _this.loader = false; // Stop loader
-                        _this.ordem_producao = response.data.ordem_producao; // Update orders after 2 seconds
-                    }, 2000); // Wait 2 seconds to show data
+                    _this.ordem_producao = response.data.ordem_producao;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Stop loader
+                    _this.loader = false; // Stop loader
                 });
         }
     },

@@ -38,18 +38,13 @@ export default {
             _this.loader = true; // Inicia o loader
             axios.get('/api/unidade')
                 .then(response => {
-
-                    // wait for 2 seconds to show the data
-                    setTimeout(() => {
-                        _this.unidades = response.data.unidades;
-                        _this.loader = false; // Para o loader
-                    }, 2000);
+                    _this.unidades = response.data.unidades;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Para o loader
+                    _this.loader = false; // Para o loader
                 });
         }
     },

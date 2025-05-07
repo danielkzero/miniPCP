@@ -1,7 +1,8 @@
 <template>
     <DataTable :data="registro_entrega" :columns="columns" :pesquisar="true" :subcolumns="subcolumns"
-        :subcolumn_name="subcolumn_name" :filhos="true" classTable="text-xs" :loading="loader" :pagination="true"
-        :itemsInPage="[20, 50, 100]" sortKey="id" sortOrder="desc" />
+        @createItem="createItem" :actions="true" @editItem="handleEditItem" :subcolumn_name="subcolumn_name"
+        :filhos="true" classTable="text-xs" :loading="loader" :pagination="true" :itemsInPage="[20, 50, 100]"
+        sortKey="id" sortOrder="desc" />
 </template>
 
 <script>
@@ -35,21 +36,22 @@ export default {
         createItem() {
             this.$router.push('/producao/registro_entrega/novo');
         },
+        handleEditItem(item) {
+            console.log("Edit item: " + item);
+            this.$router.push(`/producao/registro_entrega/editar/${item}`);
+        },
         handleGetItems() {
             let _this = this;
             _this.loader = true; // Inicia o loader
             axios.get('/api/registroentrega')
                 .then(response => {
-                    setTimeout(() => {
-                        _this.loader = false; // Para o loader
-                        _this.registro_entrega = response.data.registro_entrega; // Atualiza os setores após 2 segundos
-                    }, 2000); // Espera 2 segundos para mostrar os dados
+                    _this.registro_entrega = response.data.registro_entrega;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Para o loader
+                    _this.loader = false; // Para o loader
                 });
         }
     },

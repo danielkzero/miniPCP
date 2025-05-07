@@ -38,16 +38,13 @@ export default {
             _this.loader = true; // Inicia o loader
             axios.get('/api/operacao')
                 .then(response => {
-                    setTimeout(() => {
-                        _this.loader = false; // Para o loader
-                        _this.operacoes = response.data.operacoes; // Atualiza os setores após 2 segundos
-                    }, 2000); // Espera 2 segundos para mostrar os dados
+                    _this.operacoes = response.data.operacoes;
                 })
                 .catch(error => {
                     console.error(error);
                 })
                 .finally(() => {
-                    //_this.loader = false; // Para o loader
+                    _this.loader = false; // Para o loader
                 });
         }
 
