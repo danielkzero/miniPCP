@@ -45,7 +45,7 @@ export function registroentrega(app, db) {
                     id_filho: row.id,
                     nome: row.nome,
                     codigo_pedido: `MP-${String(row.codigo_pedido * 1).padStart(6, "0")}`,
-                    codigo_ordem_producao: `OP-${String(row.codigo_ordem_producao)}`,
+                    codigo_ordem_producao: `OP-${String(row.codigo_ordem_producao).padStart(6, "0")}`,
                     codigo: row.codigo,
                     nome_produto: row.nome_produto,
                     quantidade_emitida: row.quantidade_emitida,
