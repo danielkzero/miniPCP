@@ -182,7 +182,7 @@ export function historicaFabricacao(app, db) {
                     historicoFabricacao: 
                         rows.map(row => (
                             {
-                            ordem_de_servico: row.id_ordem_servico,
+                            ordem_de_servico: `OS-${String(row.id_ordem_servico).padStart(6, '0')}`,
                             data: moment(row.data).locale('pt-br').format('DD/MM/YYYY'),
                             descricao: row.descricao,
                             progresso: (row.progresso * 100) >= 100 ? 100 : row.progresso * 100,
