@@ -355,31 +355,31 @@ export function produtos(app, db) {
     app.get("/api/produto", async (req, res) => {
         try {
             const [produtos] = await db.execute(`
-          SELECT 
-            p.*, u.unidade AS nome_unidade, g.nome AS nome_categoria
-          FROM 
-            aion_produto p
-          LEFT JOIN aion_unidade u ON u.id = p.id_unidade
-          LEFT JOIN aion_produto_grupo g ON g.id = p.id_grupo
-          WHERE p.excluido = 0
-        `);
+                SELECT 
+                    p.*, u.unidade AS nome_unidade, g.nome AS nome_categoria
+                FROM 
+                    aion_produto p
+                LEFT JOIN aion_unidade u ON u.id = p.id_unidade
+                LEFT JOIN aion_produto_grupo g ON g.id = p.id_grupo
+                WHERE p.excluido = 0
+            `);
 
             const resultado = await Promise.all(produtos.map(async (produto) => {
                 const [anexos] = await db.execute(`
-            SELECT id, id_produto, nome, url, data_cadastro 
-            FROM aion_produto_anexo 
-            WHERE id_produto = ?`, [produto.id]);
+                SELECT id, id_produto, nome, url, data_cadastro 
+                FROM aion_produto_anexo 
+                WHERE id_produto = ?`, [produto.id]);
 
                 const [composicoes] = await db.execute(`
-            SELECT c.id, c.codigo_produto_filho AS composicao, c.quantidade, c.data_cadastro 
-            FROM aion_produto_composicao c 
-            WHERE c.codigo_produto_pai = ?`, [produto.codigo_produto]);
+                SELECT c.id, c.codigo_produto_filho AS composicao, c.quantidade, c.data_cadastro 
+                FROM aion_produto_composicao c 
+                WHERE c.codigo_produto_pai = ?`, [produto.codigo_produto]);
 
                 const [operacoes] = await db.execute(`
-            SELECT po.id, o.nome_operacao AS operacao, po.tempo, po.cadastrado_em AS data_cadastro
-            FROM aion_produto_operacao po
-            JOIN aion_operacao o ON o.id = po.id_operacao
-            WHERE po.id_produto = ?`, [produto.id]);
+                SELECT po.id, o.nome_operacao AS operacao, po.tempo, po.cadastrado_em AS data_cadastro
+                FROM aion_produto_operacao po
+                JOIN aion_operacao o ON o.id = po.id_operacao
+                WHERE po.id_produto = ?`, [produto.id]);
 
                 return {
                     id: produto.id,
