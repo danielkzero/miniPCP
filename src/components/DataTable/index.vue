@@ -34,7 +34,7 @@
                             <i v-if="sortKey === col.key"
                                 :class="sortOrder === 'asc' ? 'bx bx-sort-up text-indigo-500' : 'bx bx-sort-down text-fuchsia-600'"></i>
                         </th>
-                        <th class="px-6 py-3" v-if="actions">Ações</th>
+                        <th class="px-6 py-3 w-32" v-if="actions">Ações</th>
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-200">
@@ -306,7 +306,7 @@ export default {
         },
 
 
-        searchPredicate(item) {
+        searchPredicate2(item) {
             const searchTerm = this.search.toLowerCase();
 
             const getNestedValue = (obj, path) => {
@@ -334,6 +334,37 @@ export default {
             return searchRecursive(item);
         },
 
+        searchPredicate(item) {
+            const searchTerm = this.search.toLowerCase();
+
+            const getNestedValue = (obj, path) => {
+                return path.split('.').reduce((acc, key) => acc?.[key], obj);
+            };
+
+            const getAllColumns = () => {
+                return this.columns.flatMap(col => [col, ...(col.subcolumns || [])]);
+            };
+
+            const matchesItem = (obj) => {
+                return getAllColumns().some(col => {
+                    const rawValue = getNestedValue(obj, col.key);
+                    const value = rawValue != null ? String(rawValue).toLowerCase() : '';
+                    return value.includes(searchTerm);
+                });
+            };
+
+            const searchRecursive = (obj) => {
+                if (matchesItem(obj)) return true;
+
+                if (Array.isArray(obj.children)) {
+                    return obj.children.some(child => searchRecursive(child));
+                }
+
+                return false;
+            };
+
+            return searchRecursive(item);
+        },
 
         sortPredicate(a, b) {
             const getNestedValue = (obj, path) => path.split(".").reduce((acc, part) => acc && acc[part], obj);
