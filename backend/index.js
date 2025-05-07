@@ -18,6 +18,8 @@ import { produtos } from './produtos.js';
 import { ordemproducao } from './ordemProducao.js';
 import { registroentrega } from './registroentrega.js';
 import { maquinas } from './maquinas.js';
+import { observacao } from './observacao.js';
+import { pedidos } from './pedidos.js';
 
 dotenv.config();
 
@@ -29,7 +31,11 @@ app.use(express.json());
 
 app.use('/api/auth', authRoutes);
 
+pedidos(app, db);
+observacao(app, db);
+
 maquinas(app, db);
+
 registroentrega(app, db);
 ordemproducao(app, db);
 produtos(app, db);
