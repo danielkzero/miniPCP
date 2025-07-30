@@ -72,7 +72,11 @@
                                     </template>
                                 </span>
                                 <span v-else>
-                                    <template v-if="vetifyType(item, col)?.isHtml">
+                                    <template v-if="col.input">
+                                        <input v-model="item[col.key]" :type="col.type" :placeholder="col.placeholder"
+                                            class="border border-gray-300 rounded px-2 py-1 w-full" />
+                                    </template>
+                                    <template v-else-if="vetifyType(item, col)?.isHtml">
                                         <span v-html="vetifyType(item, col).content">
                                         </span>
                                     </template>
@@ -262,9 +266,8 @@ export default {
          * Filtra e ordena os dados antes de paginar
          */
         filteredData() {
-            return this.data
-                .filter(item => this.searchPredicate(item))
-                .sort((a, b) => this.sortPredicate(a, b));
+            return this.data?.filter(item => this.searchPredicate(item))
+                .sort((a, b) => this.sortPredicate(a, b)) ?? [];
         },
         /**
          * Retorna os dados paginados
@@ -272,7 +275,7 @@ export default {
         paginatedData() {
             const start = Number(this.currentPage - 1) * Number(this.itemsPerPage);
             const end = start + Number(this.itemsPerPage);
-            return this.filteredData.slice(start, end);
+            return this.filteredData.slice(start, end) ?? null;
         },
         /**
              * Calcula o total de páginas

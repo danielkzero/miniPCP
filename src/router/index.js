@@ -42,9 +42,22 @@ const router = createRouter({
           beforeEnter: authGuard
         },
         {
+          path: '/pedidos/novo',
+          name: 'Novo Pedido',
+          component: () => import('@/views/privado/pedidos/PedidoCreate.vue'),
+          beforeEnter: authGuard
+        },
+        {
           path: '/producao/ordem_producao',
           name: 'Ordem de produção',
           component: () => import('@/views/privado/producao/OrdemProducaoView.vue'),
+          beforeEnter: authGuard
+        },
+        // visualizador de ordens de produção
+        {
+          path: '/producao/ordem_servico/:id',
+          name: 'Ordem de serviço por ID',
+          component: () => import('@/views/privado/producao/OrdermServicoById.vue'),
           beforeEnter: authGuard
         },
         {
